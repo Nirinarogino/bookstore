@@ -21,9 +21,12 @@ export class User {
   @Column("varchar", { name: "Email", unique: true, length: 50 })
   email: string;
 
-  @Column("varchar", { name: "Password", length: 50 })
+  @Column("text", { name: "Password" })
   password: string;
 
   @Column("varchar", { name: "Role", length: 50 })
   role: string;
+
+  @Column()
+  salt: string;
 }
