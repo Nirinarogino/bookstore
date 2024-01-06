@@ -5,7 +5,6 @@ import { JwtService } from "@nestjs/jwt";
 import { Repository } from "typeorm";
 import { User } from "src/entities";
 import * as bcrypt from "bcrypt"
-import { consumers } from "stream";
 
 export class AuthService {
     constructor(

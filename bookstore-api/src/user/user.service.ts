@@ -20,11 +20,11 @@ export class UserService {
        
     try {
       await this.userRepository.save(user);
-      delete user.password;
-      delete user.salt;
     } catch (err) {
       throw new ConflictException(err);
     }
+      delete user.password;
+      delete user.salt;
     
     return user;
   }
