@@ -17,8 +17,7 @@ export class AuthService {
         const {userName, password} = userData;
         console.log(password);  
         const user = await this.userRepository.findOneBy({userName})
-        console.log(user);
-        
+                
         if(!user){
             throw new UnauthorizedException()
         }
@@ -34,5 +33,5 @@ export class AuthService {
         const jwt = await this.jwtService.signAsync(payload);
 
         return {'token': jwt}
- }
+ }  
 }
