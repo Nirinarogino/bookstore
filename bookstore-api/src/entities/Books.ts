@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { IsOptional } from "class-validator";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Index("BookID", ["bookId"], { unique: true })
 @Entity("Books", { schema: "DATABOOK" })
@@ -15,7 +16,8 @@ export class Books {
   @Column("varchar", { name: "Publisher", length: 100 })
   publisher: string;
 
-  @Column("varchar", { name: "Description", length: 255 })
+  @Column("text", { name: "Description"})
+  @IsOptional()
   description: string;
 
   @Column("varchar", { name: "Category", length: 50 })
@@ -31,11 +33,13 @@ export class Books {
   coverPath: string;
 
   @Column("date", { name: "PublicationDAte" })
-  publicationDAte: string;
+  publicationDAte: Date;
 
   @Column("date", { name: "AddDate" })
-  addDate: string;
+  @CreateDateColumn({update: false})
+  addDate: Date;
 
+  @DeleteDateColumn({update: false})
   @Column("date", { name: "DeleteDate" })
-  deleteDate: string;
+  deleteDate: Date;
 }

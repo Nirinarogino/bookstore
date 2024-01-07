@@ -7,8 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { Books, User } from './entities';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-dotenv.config()
+import { BookModule } from './book/book.module';
 
+dotenv.config()
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -26,8 +27,10 @@ dotenv.config()
     }),
     AuthModule,
     UserModule,
+    BookModule,
+
   ],
   controllers: [AppController],
-  providers: [AppService],
+    providers: [AppService],
 })
 export class AppModule {}

@@ -1,10 +1,9 @@
 import { ConflictException, Injectable } from '@nestjs/common';
+import { SubscribeDto } from '../user/dto/subscribe.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities';
-import { DeepPartial, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt'
-import { SubscribeDto } from '../user/dto/subscribe.dto';
-
 
 @Injectable()
 export class UserService {
