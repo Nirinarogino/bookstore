@@ -1,9 +1,11 @@
 import { IsOptional } from "class-validator";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { timeStamp } from "console";
+import { timeStampEntity } from "src/book/DateBook/timeStamp.entity";
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Index("BookID", ["bookId"], { unique: true })
 @Entity("Books", { schema: "DATABOOK" })
-export class Books {
+export class Books extends timeStampEntity{
   @PrimaryGeneratedColumn({ type: "int", name: "BookID" })
   bookId: number;
 
@@ -32,14 +34,4 @@ export class Books {
   @Column("varchar", { name: "CoverPath", length: 255 })
   coverPath: string;
 
-  @Column("date", { name: "PublicationDAte" })
-  publicationDAte: Date;
-
-  @Column("date", { name: "AddDate" })
-  @CreateDateColumn({update: false})
-  addDate: Date;
-
-  @DeleteDateColumn({update: false})
-  @Column("date", { name: "DeleteDate" })
-  deleteDate: Date;
 }
