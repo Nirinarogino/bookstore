@@ -15,7 +15,6 @@ export class AuthService {
     ){}
     async authentication( userData: AuthDto) {         
         const {userName, password} = userData;
-        console.log(password);  
         const user = await this.userRepository.findOneBy({userName})
                 
         if(!user){

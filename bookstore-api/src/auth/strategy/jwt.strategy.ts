@@ -1,28 +1,39 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import * as dotenv from 'dotenv'
-import { PaylodInterface } from '../Interfaces/paylod-interface';
+import { Injectable, UnauthorizedException} from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import {  Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities';
-import { Repository } from 'typeorm';
+import { PaylodInterface } from '../Interfaces/paylod-interface';
 
-dotenv.config()
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
+    private configService: ConfigService,
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private userRepository: Repository<User>
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_KEY,
+      secretOrKey: configService.get<string>('KEY_JWT') || 'your_default_secret_key',
     });
   }
 
   async validate(payload: PaylodInterface) {
-    const user = await this.userRepository.findOneBy({userName: payload.username});    
+    console.log('Payload reçu :', payload);
+  
+    const user = await this.userRepository.findOne({ where: { userName: payload.userName } });
+  
+    if (!user) {
+      console.log('Aucun utilisateur trouvé');
+      throw new UnauthorizedException('Utilisateur non autorisé');
+    }
+  
+    console.log('Utilisateur trouvé :', user);
     return user;
   }
+  
 }

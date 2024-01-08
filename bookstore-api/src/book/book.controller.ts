@@ -4,7 +4,6 @@ import { Books, User } from 'src/entities';
 import { BookService } from './book.service';
 import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Request } from 'express';
 
 @Controller('book')
 export class BookController {
@@ -13,13 +12,11 @@ export class BookController {
         ) {}
 
     @Post('add')
-    @UseGuards(JwtAuthGuard)
+    // @UseGuards(JwtAuthGuard)
     async addBook(
         @Body() book: addBookDto,
-        @UserReq() user: User,
-        @Req() req: Request
-    ): Promise<Books>{  
-        console.log(req);  
-        return await this.bookService.addBook(book, user);
+        @UserReq() user: any,
+    ){  
+        return await this.bookService.addBook(book);
     }
 }

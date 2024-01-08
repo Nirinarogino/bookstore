@@ -1,5 +1,5 @@
 export class PaylodInterface {
     userId: string;
-    username: string;
+    userName: string;
     email: string;
 }

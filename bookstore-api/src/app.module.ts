@@ -1,4 +1,3 @@
-import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -8,6 +7,8 @@ import { Books, User } from './entities';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { BookModule } from './book/book.module';
+import { HelmetMiddleware } from '@nest-middlewares/helmet';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 
 dotenv.config()
 @Module({
@@ -33,4 +34,10 @@ dotenv.config()
   controllers: [AppController],
     providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): any {
+    // IMPORTANT! Call Middleware.configure BEFORE using it for routes
+    HelmetMiddleware.configure({})
+    consumer.apply(HelmetMiddleware).forRoutes('');
+}
+}

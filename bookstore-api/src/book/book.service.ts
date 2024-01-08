@@ -13,22 +13,18 @@ export class BookService {
         private userRepository: Repository<User>
         ) {}
 
-    async addBook(book: addBookDto,user:any): Promise<Books>{  
-        const newUser = await this.userRepository.findOneBy({userName: user.name})           
-        if(newUser.role === 'admin'){
+    async addBook(book: addBookDto): Promise<Books> {                  
             const newBook =  this.bookRepository.create(book);
             try {
+
+                newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);
             } catch (err) {
                 throw new ConflictException(err);
             }
-            delete newBook.addDate;
-            delete newBook.deleteDate;
+            // delete newBook.addDate;
+            // delete newBook.deleteDate;
             return newBook;
-        } else{
-            console.log(user); 
-            throw new UnauthorizedException();
-        }
 
     }
        
