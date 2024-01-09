@@ -14,25 +14,37 @@ export class BookService {
         ) {}
 
     async addBook(book: addBookDto,user:any): Promise<Books> {
-     const data = await this.userRepository.findOneByOrFail({userName: user.userName});
-             
-        if(user.role === 'admin') {
+     const data = await this.userRepository.findOneByOrFail({ userName: user.userName });
+
+        if( user.role === 'admin') {
             const newBook =  this.bookRepository.create(book);
             try {
 
                 newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);
-            } catch (err) {
-                throw new ConflictException(err);
+            } catch ( err ) {
+                throw new ConflictException( err );
             }
             delete newBook.addDate;
             delete newBook.deleteDate;
             return newBook;
-        } else{
+        } else { 
             throw new UnauthorizedException('acces denied');
         }
-            
-
     }
        
+    async viewAllBooks(){
+            return await this.bookRepository.find()
+    }
+
+    async delleteBookById(id: number,user: any) {
+        if( user.role !== 'admin') {
+           throw new UnauthorizedException('You are not allowed to delete')
+        }         
+        const bookToDelete = await this.bookRepository.findOne({where: {bookId: id}})
+        
+        if(bookToDelete) {
+          return  await this.bookRepository.softRemove(bookToDelete);
+        }      
+    }
 }
