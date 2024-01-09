@@ -1,6 +1,5 @@
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { addBookDto } from './dto/addBook.dto';
-import { Books, User } from 'src/entities';
 import { BookService } from './book.service';
 import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -12,11 +11,13 @@ export class BookController {
         ) {}
 
     @Post('add')
-    // @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard)
     async addBook(
         @Body() book: addBookDto,
         @UserReq() user: any,
     ){  
+        console.log(user);
+        
         return await this.bookService.addBook(book);
     }
 }

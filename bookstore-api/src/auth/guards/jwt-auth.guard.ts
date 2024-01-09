@@ -3,11 +3,11 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  async canActivate(context: ExecutionContext): Promise<boolean> {
+   canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
 
     // Affiche la requête pour vérifier le token JWT et d'autres informations
-    // console.log('JwtAuthGuard - Requête :', request);
+    console.log('JwtAuthGuard - Requête :', request);
 
     return super.canActivate(context) as Promise<boolean>;
   }
