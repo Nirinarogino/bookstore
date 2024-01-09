@@ -18,25 +18,22 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_KEY'),
-      passReqToCallback: true,
-      
+      secretOrKey: configService.get<string>('JWT_KEY'),      
     });
     
   }
 
   async validate(payload: PaylodInterface) {
-    console.log('Payload reçu :', payload);
-  
-    // const user = await this.userRepository.findOne({ where: { userName: payload.userName } });
-  
-    // if (!user) {
-    //   console.log('Aucun utilisateur trouvé');
-    //   throw new UnauthorizedException('Utilisateur non autorisé');
-    // }
-  
-    // console.log('Utilisateur trouvé :', user);
-    return payload;
+     const user = await this.userRepository.findOneByOrFail({userName: payload.userName});
+      
+    if (!user) {
+      console.log('Aucun utilisateur trouvé');
+      throw new UnauthorizedException('Utilisateur non autorisé');
+    }
+
+    delete user.password;
+    delete user.salt;
+    return user;
   }
   
 }

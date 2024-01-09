@@ -33,9 +33,4 @@ export class addBookDto {
     @IsOptional()
     @IsString()
     publicationDAte: Date;
-
-    @IsString()
-    @IsOptional()
-    @IsIn(['available', 'unavailable'])
-    availabilityStatus: string;
 }
