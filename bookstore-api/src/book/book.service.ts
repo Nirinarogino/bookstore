@@ -36,4 +36,15 @@ export class BookService {
     async viewAllBooks(){
             return await this.bookRepository.find()
     }
+
+    async delleteBookById(id: number,user: any) {
+        if( user.role !== 'admin') {
+           throw new UnauthorizedException('You are not allowed to delete')
+        }         
+        const bookToDelete = await this.bookRepository.findOne({where: {bookId: id}})
+        
+        if(bookToDelete) {
+          return  await this.bookRepository.softRemove(bookToDelete);
+        }      
+    }
 }
