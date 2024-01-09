@@ -13,7 +13,10 @@ export class BookService {
         private userRepository: Repository<User>
         ) {}
 
-    async addBook(book: addBookDto): Promise<Books> {                  
+    async addBook(book: addBookDto,user:any): Promise<Books> {
+     const data = await this.userRepository.findOneByOrFail({userName: user.userName});
+             
+        if(user.role === 'admin') {
             const newBook =  this.bookRepository.create(book);
             try {
 
@@ -22,9 +25,13 @@ export class BookService {
             } catch (err) {
                 throw new ConflictException(err);
             }
-            // delete newBook.addDate;
-            // delete newBook.deleteDate;
+            delete newBook.addDate;
+            delete newBook.deleteDate;
             return newBook;
+        } else{
+            throw new UnauthorizedException('acces denied');
+        }
+            
 
     }
        

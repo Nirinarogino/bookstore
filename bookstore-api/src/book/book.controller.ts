@@ -15,7 +15,7 @@ export class BookController {
     async addBook(
         @Body() book: addBookDto,
         @UserReq() user: any,
-    ){          
-        return await this.bookService.addBook(book);
+    ){  
+        return await this.bookService.addBook(book,user);
     }
 }
