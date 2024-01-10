@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { addBookDto } from './dto/addBook.dto';
 import { BookService } from './book.service';
 import { UserReq } from 'src/decorators/user.decorator';
@@ -31,10 +31,20 @@ export class BookController {
     @Delete('deleteBook/:id')
     @UseGuards(JwtAuthGuard)
     async deleteBookById (
-     @Param('id') id: number,
-     @UserReq() user: any,
+        @Param('id') id: number,
+        @UserReq() user: any,
     ){
-         return await this.bookService.delleteBookById(id,user)
+        return await this.bookService.delleteBookById(id,user)
+    }
+
+    
+    @Get(':id')
+    @UseGuards(JwtAuthGuard)
+    async restoreBook(
+        @Param('id') id: number,
+        @UserReq() user: any,
+    ){                      
+        return await this.bookService.restoreBook(id,user)
     }
 
 }
