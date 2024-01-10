@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { addBookDto } from './dto/addBook.dto';
 import { Books, User } from 'src/entities';
 import { Repository } from 'typeorm';
@@ -19,7 +19,6 @@ export class BookService {
         if( user.role === 'admin') {
             const newBook =  this.bookRepository.create(book);
             try {
-
                 newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);
             } catch ( err ) {
@@ -42,9 +41,16 @@ export class BookService {
            throw new UnauthorizedException('You are not allowed to delete')
         }         
         const bookToDelete = await this.bookRepository.findOne({where: {bookId: id}})
-        
         if(bookToDelete) {
           return  await this.bookRepository.softRemove(bookToDelete);
         }      
+    }
+
+    async restoreBook(id: number, user: any) {
+        if(user.role === 'admin') {
+            const backBook = await this.bookRepository.restore(id)
+            return backBook
+        }
+        throw new UnauthorizedException('You are not allowed to restore')
     }
 }

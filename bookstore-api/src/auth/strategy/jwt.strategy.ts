@@ -35,5 +35,4 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     delete user.salt;
     return user;
   }
-  
 }
