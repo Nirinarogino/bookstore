@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignupComponent } from './auth/components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -8,7 +9,8 @@ const routes: Routes = [
       .then(module => module.AuthModule),
     title: "Bookstore | Authentication"
   },
-  { path: "**", redirectTo: "auth", pathMatch: "full" }
+  {path:'teste', component: SignupComponent}
+
 ];
 
 @NgModule({
