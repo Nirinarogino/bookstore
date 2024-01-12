@@ -1,0 +1,319 @@
+
+    $bg-before: #93441a7f;
+    $ob-bg: #ff0000;
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height:100vh;
+    width: 100%;
+    overflow: auto;
+}
+
+.object_up{
+    position: fixed;
+    height: 700px;
+    width: 700px;
+    border-radius: 50%;
+    background-color: $ob-bg;
+    left: -15rem;
+    margin-top: -32rem;
+    z-index: -1;
+}
+
+.object_down{
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: $ob-bg;
+    right: -7rem;
+    bottom: -4rem;
+    z-index: -1;
+
+}
+
+.login_section{
+    z-index: 1;
+    height: 75vh;
+    width: 90%;
+    box-shadow: 0 3px 3px 5px #1f1e1e2f;
+    margin: 0;
+    border-radius: 1.3rem;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left_section, .right_section {
+    width: 50%;
+    height: 100%;
+}
+
+.right_section {
+    border-radius: 0 1.3rem 1.3rem 0;
+    background-image: url('../../../../assets/images/before-background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0 1.3rem 1.3rem 0;
+        background-color: $bg-before;
+        z-index: 1;
+    }
+
+    .container_text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: #ffffff;
+        width: 67%;
+
+        .title {
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 2.7rem;
+            font-weight: bold;
+        }
+
+        .description {
+            text-align: center;
+        }
+        .svg1{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+           svg{
+            width: 10rem;
+            height: 10rem;
+            fill: white;
+            margin: 0 auto;
+           }
+        }
+    }
+}
+
+
+.left_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .svg1{
+        width: 5rem;
+        height: 5rem;
+        fill: #ff0000;
+    }
+    .headers{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 25vh;
+        width: 60%;
+        .title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff0000;
+    
+        }
+        h4{
+            margin: 0;
+            padding: 0;
+            color: #636363;
+            font-size: 1.5rem;
+        }
+        h1{
+            padding-left: 1rem;
+        }
+        p{
+            text-align: center;
+            color: #636363;
+            margin-top: -1rem;
+
+        }
+    }
+   
+   .form_container{
+        width: 100%;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+      .input_container {
+        width: 50%;
+      }
+      
+   }
+}
+.input_item{
+    margin-top: 1.5rem;
+    box-shadow: 0 0 .4rem #636363;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: .1rem solid #636363;
+    padding: .1rem;
+    border-radius: .8rem;
+    width: 100%;
+    svg{
+        width: 2rem;
+        height: 2rem;
+        fill: #636363;
+        padding-left: .5rem;
+    }
+input{
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    height: 100%;
+    width: 100%;
+    color: #636363;
+    font-size: 1rem;
+}
+}
+.btn{
+    margin-top: 2rem;
+    width: 100%;
+    height: 4vh;
+    background-color: #ff0000;
+    box-shadow: 0 0 .2rem #636363 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+   button{
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #ffff;
+    transition: .5s ease-in-out;
+   }
+  
+}
+.btn:hover{
+    border: 2px solid #ff0000;
+    background-color: transparent;
+    button{
+        color: black;
+    }
+   }
+   .create_acount{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #636363;
+     font-size: 1rem;
+     a{
+        color: #ff000091;
+     }
+    .transition{
+        margin-top: .8rem;
+        color: #636363;
+    }
+
+   }
+   #social_media{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   }
+
+   @media screen  and (max-width:1023px){
+        .right_section{
+            display: none;
+        }    
+        .login_section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .left_section{
+            width: 80%;
+        }
+   }
+   @media  all and (max-width:600px) {
+        .container{
+            overflow: scroll    ;
+        }
+        .left_section{
+            .headers{
+                p{
+                    font-size: .8rem;
+                }
+                h4{
+                    font-size: 1rem;
+                   
+                }
+                h1{
+                    font-size: 1.5rem;
+                  
+                }
+                svg{
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+        }
+        .left_section{
+            width: 100%;
+            }
+        .object_up{
+            width: 500px;
+            height: 500px;
+        }
+        .create_acount{
+            p{
+                font-size: .7rem;
+                text-align: center;
+            }
+        }
+   }
+   @media screen and (max-width:340px) {
+     .container{
+        min-height: 700px;
+     }
+     .login_section{
+        height: 90%;
+        width: 100%;
+      .left_section{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        .form_container{
+            margin-top: 3rem;
+        }
+      }
+     }
+     .headers{
+        width: 100%;
+        margin-top: 0;
+        padding: 0;
+        top: 0;
+        p{
+            margin-top: .5rem !important;
+        }
+     }
+     
+   }
