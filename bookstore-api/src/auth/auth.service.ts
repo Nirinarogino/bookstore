@@ -18,7 +18,7 @@ export class AuthService {
         const user = await this.userRepository.findOneBy({userName})
                 
         if(!user){
-            throw new UnauthorizedException()
+            throw new UnauthorizedException('information invalide')
         }
 
         const hashedPassword = await bcrypt.hash(password, user.salt);    
