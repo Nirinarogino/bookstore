@@ -1,5 +1,5 @@
 declare var google: any
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,11 +21,11 @@ export class SigninComponent implements OnInit {
   logForm!: FormGroup;
   userNameCtrl!: FormControl;
   passwordCtrl!: FormControl;
-
+  
   // ======= CONSTANTE =============
   
   envId = environement.client_id
-
+  onLoad!: boolean;
 
   //========= METHODE ===========
   unitForm(){
@@ -54,7 +54,7 @@ export class SigninComponent implements OnInit {
       theme: 'filled_blue',
       size: 'large',
       shape:'rectangle',
-      width: 100,
+      width: 120,
     })
   }
 
@@ -79,9 +79,24 @@ export class SigninComponent implements OnInit {
   this.unitGoogle()
  }
  onSubmit(): void{
- const infouser =  this.logForm.value
+   const infouser =  this.logForm.value
    this.http.post('http://localhost:3000/auth', infouser).subscribe(res => {
-     console.log(res)
-   })
+        if(res){
+          this.router.navigate(['/teste'])
+        }})
+
+      if(HttpErrorResponse){
+        this.onLoad=true
+      }
  }
 }
+
+
+
+
+
+
+
+// .subscribe(res => {
+//   console.log(res)
+// })

@@ -315,5 +315,18 @@ input{
             margin-top: .5rem !important;
         }
      }
+     .object_down{
+        display: none;
+     }
+     .object_up{
+        display: none;
+     }
      
+   }
+   .error{
+    color: red;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin-top: 2.5rem;
+    letter-spacing: 2px;
    }
