@@ -55,6 +55,7 @@ export class SigninComponent implements OnInit {
       size: 'large',
       shape:'rectangle',
       width: 120,
+      text: "signin_with"
     })
   }
 
