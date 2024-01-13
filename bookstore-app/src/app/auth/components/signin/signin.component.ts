@@ -1,4 +1,5 @@
 declare var google: any
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,12 +13,13 @@ import { environement } from 'src/environements/environement';
 export class SigninComponent implements OnInit {
   constructor(
       private router: Router,
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      private http: HttpClient
   ) {}
   // ========= VARIABLE ===========
 
   logForm!: FormGroup;
-  usernameCtrl!: FormControl;
+  userNameCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
   // ======= CONSTANTE =============
@@ -27,9 +29,9 @@ export class SigninComponent implements OnInit {
 
   //========= METHODE ===========
   unitForm(){
-    this.usernameCtrl = this.formBuilder.control('');
-    this.usernameCtrl.updateValueAndValidity()
-    this.usernameCtrl.addValidators([Validators.email, Validators.required])
+    this.userNameCtrl = this.formBuilder.control('');
+    this.userNameCtrl.updateValueAndValidity()
+    this.userNameCtrl.addValidators([Validators.email, Validators.required])
 
     this.passwordCtrl = this.formBuilder.control('')
     this.passwordCtrl.updateValueAndValidity()
@@ -37,7 +39,7 @@ export class SigninComponent implements OnInit {
         updateOne: 'blur'
     this.passwordCtrl.updateValueAndValidity()
     this.logForm = this.formBuilder.group({
-      username: this.usernameCtrl,
+      userName: this.userNameCtrl,
       password: this.passwordCtrl
     })
   }
@@ -78,6 +80,8 @@ export class SigninComponent implements OnInit {
  }
  onSubmit(): void{
  const infouser =  this.logForm.value
-  console.log(infouser);
+   this.http.post('http://localhost:3000/auth', infouser).subscribe(res => {
+     console.log(res)
+   })
  }
 }
