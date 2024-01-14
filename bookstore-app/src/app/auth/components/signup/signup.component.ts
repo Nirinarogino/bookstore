@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class SignupComponent  implements OnInit {
  constructor(
   private formBuilder: FormBuilder,
-  private http: HttpClient
+  private http: HttpClient,
+  private router: Router
   ){}
 // =========== VARIABLE =========
 
@@ -60,7 +62,10 @@ unitForm() {
 
 onSignUp(){
   console.log(this.SignupForm.value);
-  this.http.post('http://localhost:3000/user/create',this.SignupForm.value ).subscribe()
+  this.http.post('http://localhost:3000/user/create',this.SignupForm.value ).subscribe(res => {
+   this.router.navigate([''])
+  }
+  )
   
 
 }
