@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignupComponent } from './auth/components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -9,7 +8,12 @@ const routes: Routes = [
       .then(module => module.AuthModule),
     title: "Bookstore | Authentication"
   },
-  {path:'teste', component: SignupComponent}
+  {
+    path: "",
+    loadChildren: () => import("./featur/featur.module")
+      .then(module => module.FeaturModule),
+    title: "home | bookstore"
+  },
 
 ];
 

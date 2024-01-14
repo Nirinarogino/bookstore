@@ -55,6 +55,7 @@ export class SigninComponent implements OnInit {
       size: 'large',
       shape:'rectangle',
       width: 120,
+      text: "signin_with"
     })
   }
 
@@ -68,7 +69,7 @@ export class SigninComponent implements OnInit {
       //enregistrer le token
       sessionStorage.setItem('loggedInUser', JSON.stringify(paylod));
       //redirection vers l'accueil
-      this.router.navigate(['/teste']);     
+      this.router.navigate(['/']);     
     }
   }
 
@@ -82,7 +83,7 @@ export class SigninComponent implements OnInit {
    const infouser =  this.logForm.value
    this.http.post('http://localhost:3000/auth', infouser).subscribe(res => {
         if(res){
-          this.router.navigate(['/teste'])
+          this.router.navigate(['/'])
         }})
 
       if(HttpErrorResponse){
@@ -90,13 +91,3 @@ export class SigninComponent implements OnInit {
       }
  }
 }
-
-
-
-
-
-
-
-// .subscribe(res => {
-//   console.log(res)
-// })
