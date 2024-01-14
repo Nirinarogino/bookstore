@@ -34,11 +34,12 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>choose your level</mat-label>
-                <mat-select formGroupName="usertype">
-                <mat-option value="admin"> Admin </mat-option>
-                <mat-option value="reader"> Reader </mat-option>
+                <mat-select formControlName="role">
+                    <mat-option value="admin"> Admin </mat-option>
+                    <mat-option value="reader"> Reader </mat-option>
                 </mat-select>
             </mat-form-field>
+
 
             <mat-form-field appearance="outline">
                     <mat-label>Password </mat-label>
