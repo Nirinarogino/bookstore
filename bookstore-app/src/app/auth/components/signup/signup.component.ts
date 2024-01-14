@@ -53,14 +53,14 @@ unitForm() {
     firstName: this.FirstNameCtrl,
     lastName: this.LastNameCtrl,
     email: this.EmailCtrl,
-    usertype: this.UsertypeCtrl,
+    role: this.UsertypeCtrl,
     password: this.PasswordCtrl,
   })
 }
 
 onSignUp(){
   console.log(this.SignupForm.value);
-  this.http.post('http://localhost:3000/create',this.SignupForm.value ).subscribe()
+  this.http.post('http://localhost:3000/user/create',this.SignupForm.value ).subscribe()
   
 
 }
