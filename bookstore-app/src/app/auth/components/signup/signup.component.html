@@ -6,38 +6,56 @@
     <title>signup</title>
 </head>
 <body>
-    <div class="container">
-        <mat-form-field class="left">
-            <mat-form-field appearance="fill">
-                <mat-label>Firstname</mat-label>
-                <input matInput type="text">
+  <div class="container">
+      <div class="content" [formGroup]="SignupForm">
+        <mat-card class="left">
+            <mat-card-title>
+                Sign Up to Bookstore
+            </mat-card-title>
+            <mat-form-field appearance="outline">
+                <mat-label>FirstName</mat-label>
+                <input matInput placeholder="Enter your LastName"type="text" formControlName="firstName">
             </mat-form-field>
-            <!-- <mat-form-field appearance="fill">
-                <mat-label>Lastname</mat-label>
-                <input matInput type="text">
+        
+            <mat-form-field appearance="outline">
+                <mat-label>LastName</mat-label>
+                <input matInput placeholder="Enter your LastName" type="text" formControlName="lastName">
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Username</mat-label>
-                <input matInput type="text">
-            </mat-form-field> -->
 
-        </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>UserName</mat-label>
+                <input matInput type="text" placeholder="Enter your UserName" formControlName="userName">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter your LastName"type="Email" formControlName="email">
+            </mat-form-field>
 
-        <mat-form-field class="left">
-                
-        </mat-form-field>
-        <span class="style">
+            <mat-form-field appearance="outline">
+                <mat-label>choose your level</mat-label>
+                <mat-select formGroupName="usertype">
+                <mat-option value="admin"> Admin </mat-option>
+                <mat-option value="reader"> Reader </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        </span>
-        <mat-form-field class="right">
+            <mat-form-field appearance="outline">
+                    <mat-label>Password </mat-label>
+                    <input matInput placeholder="Enter your Password" type="password" formControlName="password">
+            </mat-form-field>
 
-        </mat-form-field>
-    </div>
+            <div class="btn">
+                <button mat-raised-button color="primary" (click)="onSignUp()">Sign Up</button>
+            </div>
+
+        </mat-card>
+        <mat-card class="right">
+            <div class="span">
+                <p>Bookstore</p>
+            </div>
+        </mat-card>
+      </div>
+  </div>
 </body>
 </html>
-<!-- email
-userName
-firstName
-lastName
-password
-role   -->
