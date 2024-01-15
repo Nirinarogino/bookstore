@@ -45,29 +45,10 @@
     height: 90vh;
     border: 1px solid black;
 }
-.categorie{
-    background-color: #020a10;
-}
 .content{
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .categorie_span{
-        width: 10rem;
-        height: 10rem;
-        border: 2px solid white;
-        margin-left: -21.4rem;
-        // border-radius:0 0 0 100%;
-        // border-top: 0;
-        // border-right: 0;
-        border-radius: 0 -500px 0 0;
-    }
-    .elt_categorie{
-        width: 90%;
-        height: 70vh;
-        border: 2px solid white;
-        border-radius:  0 30% 30% 0;
-        }
 }
