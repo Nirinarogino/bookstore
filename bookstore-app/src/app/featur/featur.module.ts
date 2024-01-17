@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FeaturRoutingModule } from './featur-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { SingleBookComponent } from './components/single-book/single-book.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    SingleBookComponent
   ],
   imports: [
     CommonModule,
