@@ -10,11 +10,10 @@ import {MatInputModule} from "@angular/material/input"
 import {MatCheckboxModule} from "@angular/material/checkbox"
 import{MatRadioModule} from "@angular/material/radio"
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner"
-import{MatSelectModule} from'@angular/material/select'
-import {MatMenuModule} from '@angular/material/menu';
+import{MatSelectModule} from'@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [],
   exports: [

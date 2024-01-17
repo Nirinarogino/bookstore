@@ -24,11 +24,44 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
                         <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                      </svg>
+                    </svg>
                </mat-card-title>
 
                 <mat-card-title class="image"> <img src="../../../../assets/images/new_york_city.avif" alt=""> </mat-card-title>
             </div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-menu-button-wide" viewBox="0 0 16 16">
+                        <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5z"/>
+                        <path d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0M0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+                      </svg>
+                </mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                    <mat-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                        </svg>
+                    </mat-icon>
+                    </button>
+                    <button mat-menu-item>
+                    <mat-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                        </svg>
+                    </mat-icon>
+                    </button>
+                    <button mat-menu-item>
+                    <mat-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                        </svg>
+                    </mat-icon>
+                    </button>
+              </mat-menu>
         </nav>
     </div>
     <div class="container">
@@ -49,7 +82,7 @@
         </div>
         
         <div class="list">
-            <h2>Liste de Livre</h2>
+            <h2 class="title_liste">Liste de Livre</h2>
             <div class="book_content">
                 <div class="book_image">
                     <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
@@ -62,7 +95,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
@@ -78,7 +111,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
@@ -94,7 +127,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
@@ -110,7 +143,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
@@ -126,7 +159,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div><div class="book_content">
@@ -141,7 +174,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Primary</button>
+                            <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
