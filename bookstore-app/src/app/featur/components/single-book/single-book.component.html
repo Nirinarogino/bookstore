@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="liste_book">
+        <div class="liste_book" [ngClass]="{'clicked': isClicked}">
             <mat-card-title>
                 borrow book list
             </mat-card-title>
@@ -103,21 +103,27 @@
         </div>
         <div class="single_book">
             <div class="up">
+                <h1 class="side" (click)="click()">
+                    <mat-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-layout-sidebar-inset" viewBox="0 0 16 16">
+                            <path d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"/>
+                            <path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+                          </svg>
+                    </mat-icon>
+                </h1>
                 <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
             </div>
             <div class="down">
                 <mat-card-title>
-                    <h1>Titre: hary_poter</h1>
+                    <h1>Title: hary_poter</h1>      
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <span>Resumer:</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    <span>Summary:</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Tenetur at maiores soluta eveniet atque voluptatem provident accusamus velit fuga commodi a dicta,
                      iste consectetur perspiciatis quis labore reprehenderit dolorem itaque vel molestias ab! Voluptatibus
                     placeat earum nulla provident quam, doloremque ad tempora dolorem amet quis quisquam tempore deleniti
                     doloribus eum! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur, neque soluta culpa
-                    eos rerum, voluptates ipsa veritatis dicta illum facere laboriosam iure natus a amet possimus minus
-                    perspiciatis error modi autem delectus non quia architecto. Culpa nemo, numquam aspernatur,
-                    iure aliquam omnis laborum ratione at impedit ut provident veritatis illum!
+                   
                 </mat-card-subtitle>
                 <div class="btn_footer">
                     <button mat-raised-button color="primary">borrow the book</button>
