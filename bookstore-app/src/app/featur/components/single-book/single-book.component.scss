@@ -1,3 +1,6 @@
+$bg_single: rgba(128, 128, 128, 0.518);
+$bg-before: #93441a88;
+$ob-bg: #03C03C;
 .container{
     display: flex;
     align-items: center;
@@ -46,6 +49,7 @@
                 button{
                     width: 100%;
                     margin-top: .5rem;
+                    background-color: $ob-bg;
                 }
                 
             }
@@ -56,7 +60,7 @@
         width: 45%;
         height: 98%;
         border-radius: 2rem;
-        background-color: rgba(87, 87, 94, 0.506);
+        background-color: $bg_single;
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
         .up{
             background-color: rgb(255, 255, 255);
@@ -66,11 +70,30 @@
             display: flex;
             align-items: center;    
             justify-content: center;
-            
-            img{
+            .side{
+                mat-icon{
+                    svg{
+                        display: none;
+                    }
+                }
+            }
+
+            .image_principale{
                 margin-top: 2rem;
                 border-radius: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
                 height: 100%;
+                width: 100%;
+                img{
+                    border-radius: 2rem;
+                }
+            }
+            .image1, .image3{
+                margin-top: -5rem;
+                width: 15%;
+                height: 70%;
             }
         }
         .down{
@@ -97,10 +120,12 @@
                 margin-top: 2rem;
                 width: 100%;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 button{
-                    width: 100%;
+                    width: 80%;
+                    background-color: $ob-bg;
+                    font-weight: bolder;
                 }
             }
         }
@@ -110,11 +135,15 @@
 @media all and (max-width:1023px) and (min-width: 950px) {
     .book_content{
         grid-column: 6 span !important;
-    }
+    } 
+    
 }
 @media all and (max-width:950px){
     .book_content{
         grid-column: 12 span !important;
+    }
+    .image1, .image3{
+       display: none;
     }
     .container{
         height: 100%;
@@ -180,6 +209,9 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        svg{
+                            display: block !important;
+                        }
 
                     }
                     
@@ -208,7 +240,7 @@
          h1{
             position: absolute;
             width: 100%;
-            margin-top: -10rem !important;
+            margin-top: -15rem !important;
             margin-left: 1rem;
          }
     }
