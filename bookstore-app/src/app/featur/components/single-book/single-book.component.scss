@@ -78,10 +78,22 @@ $ob-bg: #03C03C;
                 }
             }
 
-            img{
+            .image_principale{
                 margin-top: 2rem;
                 border-radius: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
                 height: 100%;
+                width: 100%;
+                img{
+                    border-radius: 2rem;
+                }
+            }
+            .image1, .image3{
+                margin-top: -5rem;
+                width: 15%;
+                height: 70%;
             }
         }
         .down{
@@ -112,7 +124,8 @@ $ob-bg: #03C03C;
                 justify-content: center;
                 button{
                     width: 80%;
-                    background-color: $bg-before;
+                    background-color: $ob-bg;
+                    font-weight: bolder;
                 }
             }
         }
@@ -122,12 +135,15 @@ $ob-bg: #03C03C;
 @media all and (max-width:1023px) and (min-width: 950px) {
     .book_content{
         grid-column: 6 span !important;
-    }
+    } 
     
 }
 @media all and (max-width:950px){
     .book_content{
         grid-column: 12 span !important;
+    }
+    .image1, .image3{
+       display: none;
     }
     .container{
         height: 100%;
