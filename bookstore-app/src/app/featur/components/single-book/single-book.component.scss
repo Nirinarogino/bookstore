@@ -106,3 +106,19 @@
     }
     
 }
+@media all and (max-width:1023px) and (min-width: 950px) {
+    .book_content{
+        grid-column: 6 span !important;
+    }
+}
+@media all and (max-width:950px) {
+    .book_content{
+        grid-column: 12 span !important;
+    }
+    .container{
+        display: flex;
+        align-items: center !important;
+        justify-content: center!important;
+        flex-direction: column;
+    }
+}
