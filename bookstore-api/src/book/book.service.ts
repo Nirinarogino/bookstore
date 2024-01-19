@@ -13,11 +13,14 @@ export class BookService {
         private userRepository: Repository<User>
         ) {}
 
-    async addBook(book: addBookDto,user:any): Promise<Books> {
-     const data = await this.userRepository.findOneByOrFail({ userName: user.userName });
+    async addBook(book: addBookDto,user:any,file: any): Promise<Books> {
+     const data = await this.userRepository.findOneByOrFail({ userName: user.userName });     
 
-        if( user.role === 'admin') {
-            const newBook =  this.bookRepository.create(book);
+        if( data.role === 'admin') {
+            const newBook =  this.bookRepository.create({...book, coverPath: file.path});
+            console.log(file.path);
+            
+    
             try {
                 newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);
