@@ -3,6 +3,7 @@ import { addBookDto } from './dto/addBook.dto';
 import { Books, User } from 'src/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { File } from 'buffer';
 
 @Injectable()
 export class BookService {
@@ -13,11 +14,14 @@ export class BookService {
         private userRepository: Repository<User>
         ) {}
 
-    async addBook(book: addBookDto,user:any): Promise<Books> {
+    async addBook(book: addBookDto,user:any,file: any): Promise<Books> {
      const data = await this.userRepository.findOneByOrFail({ userName: user.userName });
 
         if( user.role === 'admin') {
-            const newBook =  this.bookRepository.create(book);
+            const newBook =  this.bookRepository.create({...book, coverPath: file.path});
+            console.log(file.path);
+            
+    
             try {
                 newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);

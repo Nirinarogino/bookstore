@@ -1,40 +1,44 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { addBookDto } from './dto/addBook.dto';
 import { BookService } from './book.service';
 import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import multer, { diskStorage } from 'multer';
-import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
+
 
 @Controller('book')
 export class BookController {
     constructor (
         private bookService: BookService
         ) {}
-// ===================== declaration of the const =====================
-
-storage = multer.diskStorage({
-    destination: './book_images',
-    filename: function (req, file, cb) {
-        const filename: string = path.parse(file.originalname).name.replace(/\\/g, '') + uuidv4();
-        const extension: string = path.parse(file.originalname).ext;
-        cb(null, filename + extension)
-    }
-})
- upload = multer({ storage: this.storage })
 
 
 // =================== add book to the bookstore ===============
     @Post('add')
-    @UseInterceptors(FileInterceptor('file'))
+    @UseInterceptors(FileInterceptor('file',{
+        storage: diskStorage({
+            destination: './book_images',
+            filename: function (req, file, cb) {
+                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+                // const extension = path.parse(file.originalname).ext
+                cb(null, file.fieldname + '-' + uniqueSuffix)
+              }
+        })
+    }))
     @UseGuards(JwtAuthGuard)
     async addBook(
         @Body() book: addBookDto,
-        @UserReq() user: any,
-    ){  
-        return await this.bookService.addBook(book,user);
+        @UserReq() user: any,    
+        @UploadedFile()file: Express.Multer.File,
+    ){      
+        // return await this.bookService.addBook(book,user,file);
+        if(!file){
+            console.log('fichier introuvable');  
+        }
+        return await this.bookService.addBook(book,user,file);
+
     }
 // =================== to view all book at the bookstore ===============
 
