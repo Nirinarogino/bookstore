@@ -5,7 +5,8 @@ import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import multer, { diskStorage } from 'multer';
-import path from 'path';
+import * as path from 'path';
+import { v4 as uuidv4 } from 'uuid'
 
 
 @Controller('book')
@@ -19,11 +20,11 @@ export class BookController {
     @Post('add')
     @UseInterceptors(FileInterceptor('file',{
         storage: diskStorage({
-            destination: './book_images',
+            destination: 'book_images',
             filename: function (req, file, cb) {
-                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-                // const extension = path.parse(file.originalname).ext
-                cb(null, file.fieldname + '-' + uniqueSuffix)
+                const extension = path.parse(file.originalname).ext
+                const filename = path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
+                cb(null, filename + extension)
               }
         })
     }))
@@ -34,6 +35,9 @@ export class BookController {
         @UploadedFile()file: Express.Multer.File,
     ){      
         // return await this.bookService.addBook(book,user,file);
+        console.log(user);
+        console.log(file);
+        
         if(!file){
             console.log('fichier introuvable');  
         }
