@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" [formGroup]="bookForm">
+        <div class="input_container">
+            <input type="text" formControlName="title" id="title" class="input_class" placeholder="Enter title">
+        </div>
+        <div class="input_container">
+            <input type="text" formControlName="author" id="author" class="input_class" placeholder="Enter author">
+        </div>
+        <div class="input_container">
+            <input type="text" formControlName="publisher" id="publisher" class="input_class" placeholder="Enter publisher">
+        </div>
+        <div>
+            <textarea formControlName="description" id="description" cols="30" rows="10" placeholder="description"></textarea>
+        </div>
+        <div class="input_container">
+            <input type="text" formControlName="category" id="category" class="input_class" placeholder="Enter category">
+        </div>
+        <div class="input_container">
+            <input type="date" formControlName="publicationDAte" id="publicationDAte" class="input_class" placeholder="Enter publicationDAte">
+        </div>
+        <div class="input_container">
+            <input type="text" formControlName="language" id="language" class="input_class" placeholder="Enter language">
+        </div>
+        <div class="input_container">
+            <input type="file" name="cover" id="cover" (change)="onSelectFile($event)">
+        </div>
+        <button mat-raised-button color="primary" (click)="onsubmit()">Primary</button>
+            
+    </div>
+</body>
+</html>
