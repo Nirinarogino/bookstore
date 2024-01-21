@@ -87,12 +87,10 @@ onSubmit() {
 
   // Append the JSON data to FormData
   formdata.append("jsonData", JSON.stringify(book_data));
-
-
   this.Http.post('http://localhost:3000/book/add', formdata,
     {
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hbmRyYWluYTIyIiwidXNlcmlkIjo0LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDU4NDE4MzgsImV4cCI6MTcwNTg0NTQzOH0.gUS7f4ITbp1xz4c-wYf0nk_IirVaSrBpF4EgQejnVWVG9vOPp9b089zM3LJ3aygLLxkuHM4Fwt6rwE0urJYMfg"
+        "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hbmRyYWluYTIyIiwidXNlcmlkIjo0LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDU4NTA0MTQsImV4cCI6MTcwNTg1NDAxNH0.iHsNn3SC6AO-agQ9_5lAojADFX4Q7JTHlyzBtKoX4_T71nSOAN0D4jK9hpdXYAaSYFQdWm9gPFCTq5kGq-NHcA"
       }
     }
   ).subscribe(()=>{
