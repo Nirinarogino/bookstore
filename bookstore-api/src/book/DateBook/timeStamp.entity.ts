@@ -6,7 +6,4 @@ export class  timeStampEntity {
   
     @DeleteDateColumn({update: false})
     deleteDate: Date;
-
-    @Column("varchar", { name: "PublicationDAte" })
-    PublicationDAte: Date;
 }

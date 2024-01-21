@@ -34,4 +34,7 @@ export class Books extends timeStampEntity{
   @Column("varchar", { name: "CoverPath", length: 255 })
   coverPath: string;
 
+  @Column("varchar", { name: "PublicationDAte" })
+  PublicationDAte: Date;
+
 }

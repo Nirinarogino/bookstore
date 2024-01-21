@@ -1,4 +1,4 @@
-import { IsDate, IsIn, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import {  IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class addBookDto {
     @IsString()
@@ -29,7 +29,6 @@ export class addBookDto {
     @IsNotEmpty()
     coverPath: string;
 
-    @IsNotEmpty()
     @IsOptional()
     @IsString()
     publicationDAte: Date;
