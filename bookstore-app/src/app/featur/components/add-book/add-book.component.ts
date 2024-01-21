@@ -73,22 +73,35 @@ onSelectFile(event: any): void {
   this.bookFile.patchValue(files![0]);
   this.bookFile.updateValueAndValidity();
 }
-
-onsubmit() {
+onSubmit() {
   const formdata = new FormData();
+
+  // Assuming this.bookForm is a FormGroup
   const book_data = this.bookForm.value;
-  formdata.set("file", this.bookFile.value);
+
+  // Assuming this.bookFile is a FormControl representing the file input
+  const fileValue = this.bookFile.value;
+
+  // Append the file to FormData
+  formdata.append("file", fileValue);
+
+  // Append the JSON data to FormData
   formdata.append("jsonData", JSON.stringify(book_data));
-  console.log(formdata);
-  
-  this.Http.post('http://localhost:3000/book/add', formdata, 
-    { 
+
+
+  this.Http.post('http://localhost:3000/book/add', formdata,
+    {
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hbmRyYWluYTIyIiwidXNlcmlkIjo0LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDU3Nzg2NDIsImV4cCI6MTcwNTc4MjI0Mn0.aFHr6L1_aQH3yI8CbCrudn6u3RWwp5gzNtAIcYixVVBdQXGWVs3OZqy2H0KukYbi11BmGoJRC0FEGt18WHwTUQ"
+        "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hbmRyYWluYTIyIiwidXNlcmlkIjo0LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDU4NDE4MzgsImV4cCI6MTcwNTg0NTQzOH0.gUS7f4ITbp1xz4c-wYf0nk_IirVaSrBpF4EgQejnVWVG9vOPp9b089zM3LJ3aygLLxkuHM4Fwt6rwE0urJYMfg"
       }
     }
-  ).subscribe();
+  ).subscribe(()=>{
+    console.log(formdata);
+  });
 }
+
+
+
 ngOnInit(): void {
   this.unitForm();
   

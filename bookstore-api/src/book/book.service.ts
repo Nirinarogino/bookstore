@@ -13,14 +13,25 @@ export class BookService {
         private userRepository: Repository<User>
         ) {}
 
-    async addBook(book: addBookDto,user:any,file: any): Promise<Books> {
-     const data = await this.userRepository.findOneByOrFail({ userName: user.userName });     
+    async addBook(book: addBookDto, user: any, file: any): Promise<Books> {
+        console.log('avant', book);
+        const data = await this.userRepository.findOneByOrFail({ userName: user.userName });     
+        const newBook =  this.bookRepository.create({
+            title: book.title || 'Default Title',
+            author: book.author || 'Default Author',
+            publisher: book.publisher || 'Default Publisher',
+            description: book.description || 'Default Description',
+            category: book.category || 'Default Category',
+            language: book.language || 'Default Language',
+            PublicationDAte: Date.now(),
+            coverPath: file.path,
 
+        });
+        console.log('apres',newBook); 
+
+        
         if( data.role === 'admin') {
-            const newBook =  this.bookRepository.create({...book, coverPath: file.path});
-            console.log(file.path);
-            
-    
+            // console.log('backend log',file.path);
             try {
                 newBook.availabilityStatus = 'available';
                 await this.bookRepository.save(newBook);

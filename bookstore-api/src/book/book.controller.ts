@@ -21,10 +21,12 @@ export class BookController {
     @UseInterceptors(FileInterceptor('file',{
         storage: diskStorage({
             destination: 'book_images',
-            filename: function (req, file, cb) {
-                const extension = path.parse(file.originalname).ext
-                const filename = path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
-                cb(null, filename + extension)
+            filename: (req, file, cb) => {
+                const name: string = file.originalname.split('.')[0];
+                const tmp: Array<string> = file.originalname.split('.');
+                const fileExtension: string = tmp[tmp.length - 1];
+                const newFilename: string = name.split('.').join('_')+ '_'+ Date.now()+'.'+fileExtension;
+                cb(null, newFilename);
               }
         })
     }))
@@ -35,12 +37,6 @@ export class BookController {
         @UploadedFile()file: Express.Multer.File,
     ){      
         // return await this.bookService.addBook(book,user,file);
-        console.log(user);
-        console.log(file);
-        
-        if(!file){
-            console.log('fichier introuvable');  
-        }
         return await this.bookService.addBook(book,user,file);
 
     }
