@@ -14,26 +14,31 @@ export class BookService {
         ) {}
 
     async addBook(book: addBookDto, user: any, file: any): Promise<Books> {
-        console.log('avant', book);
-        const data = await this.userRepository.findOneByOrFail({ userName: user.userName });     
-        const newBook =  this.bookRepository.create({
-            title: book.title || 'Default Title',
-            author: book.author || 'Default Author',
-            publisher: book.publisher || 'Default Publisher',
-            description: book.description || 'Default Description',
-            category: book.category || 'Default Category',
-            language: book.language || 'Default Language',
-            PublicationDAte: Date.now(),
-            coverPath: file.path,
-
-        });
-        console.log('apres',newBook); 
+        const data = await this.userRepository.findOneByOrFail({ userName: user.userName });
+        // @ts-ignore
+        const jsonData = JSON.parse(book.jsonData);
+        const newBook =  this.bookRepository.create(book);
+        console.log('json = ....',jsonData);
+        
+                newBook.title = book.title ,
+                console.log('mon book',book);
+                
+                console.log('titre de la book',book.title);
+                newBook.title =jsonData.title
+                newBook.author=jsonData.author
+                newBook.PublicationDAte =jsonData.publicationDAte,
+                newBook.publisher=jsonData.publisher,
+                newBook.description=jsonData.description ,
+                newBook.category=jsonData.category,
+                newBook.language=jsonData.language ,
+                newBook.coverPath=file.path;
 
         
         if( data.role === 'admin') {
-            // console.log('backend log',file.path);
             try {
                 newBook.availabilityStatus = 'available';
+                console.log('dans try',newBook);
+                
                 await this.bookRepository.save(newBook);
             } catch ( err ) {
                 throw new ConflictException( err );
