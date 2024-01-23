@@ -1,5 +1,6 @@
 declare var google: any
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -81,11 +82,13 @@ export class SigninComponent implements OnInit {
  }
  onSubmit(): void{
    const infouser =  this.logForm.value
-   this.http.post('http://localhost:3000/auth', infouser).subscribe(res => {
-        if(res){
+   this.http.post('http://localhost:3000/auth', infouser).subscribe((res:any) => {
+        if(res && typeof res === 'object' && 'token' in res){
+          const token = res['token'];
+          //enregistrer le token
+          sessionStorage.setItem('token', token);          
           this.router.navigate(['/'])
         }})
-
       if(HttpErrorResponse){
         this.onLoad=true
       }
