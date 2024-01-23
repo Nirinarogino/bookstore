@@ -9,32 +9,37 @@
     <div class="container" [formGroup]="bookForm">
         <div class="content1">
             <div class="input_container">
-                <input type="text" formControlName="title" id="title" class="input_class" placeholder="Enter title">
+                <label for="title">Title of book</label>
+                <input type="text" formControlName="title" id="title" class="input_class" placeholder="exemple Lala sy Noro">
             </div>
             <div class="input_container">
-                <input type="text" formControlName="author" id="author" class="input_class" placeholder="Enter author">
+                <label for="author">Author of the book</label>
+                <input type="text" formControlName="author" id="author" class="input_class" placeholder="exemple Robert-T">
             </div>
             <div class="input_container">
-                <input type="text" formControlName="publisher" id="publisher" class="input_class" placeholder="Enter publisher">
+                <label for="publisher">Book's publisher</label>
+                <input type="text" formControlName="publisher" id="publisher" class="input_class" placeholder="exemple HarperCollins">
             </div>
-            <div>
-                <textarea formControlName="description" id="description" cols="30" rows="10" placeholder="description"></textarea>
+            <div class="description">
+                <label for="description">Description</label>
+                <textarea formControlName="description" id="description" cols="30" rows="10" placeholder="exemple c'est une livre qui..."></textarea>
             </div>
         </div>
-
-        <span class="center"></span>
-
         <div class="content2">
             <div class="input_container">
+                <label for="category">Category</label>
                 <input type="text" formControlName="category" id="category" class="input_class" placeholder="Enter category">
             </div>
             <div class="input_container">
+                <label for="publicationDAte">Publication date</label>
                 <input type="date" formControlName="publicationDAte" id="publicationDAte" class="input_class" placeholder="Enter publicationDAte">
             </div>
             <div class="input_container">
-                <input type="text" formControlName="language" id="language" class="input_class" placeholder="Enter language">
+                <label for="language">Language</label>
+                <input type="text" formControlName="language" id="language" class="input_class" placeholder="Exemple Malagasy">
             </div>
             <div class="input_container">
+                <label for="cover">Image cover</label>
                 <input type="file" name="cover" id="cover" (change)="onSelectFile($event)">
             </div>
              <button mat-raised-button color="primary" (click)="onSubmit()"> Save </button>
