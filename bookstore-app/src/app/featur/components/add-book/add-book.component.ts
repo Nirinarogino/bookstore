@@ -84,13 +84,14 @@ onSubmit() {
 
   // Append the file to FormData
   formdata.append("file", fileValue);
+  const token = sessionStorage.getItem('token');
 
   // Append the JSON data to FormData
   formdata.append("jsonData", JSON.stringify(book_data));
   this.Http.post('http://localhost:3000/book/add', formdata,
     {
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5hbmRyYWluYTIyIiwidXNlcmlkIjo0LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDU4Njg0ODYsImV4cCI6MTcwNTg3MjA4Nn0.JFPZfPTiMvlOZtXAEdANDD7gWmyglxRt9QCmaIdNDxz1oM-Z3bR1eG6A_2Bxj23YnZAFLwAPQ9PLNdNgUns-9w"
+        "Authorization": `Bearer ${token}`
       }
     }
   ).subscribe(()=>{

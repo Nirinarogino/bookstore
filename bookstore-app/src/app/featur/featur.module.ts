@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SingleBookComponent } from './components/single-book/single-book.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,6 +21,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     FeaturRoutingModule,
     SharedModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddBookComponent,
+      multi: true
+    }
   ]
 })
 export class FeaturModule { }
