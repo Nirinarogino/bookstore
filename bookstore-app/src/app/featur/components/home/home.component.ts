@@ -22,7 +22,6 @@ export class HomeComponent  implements OnInit{
   ){}
   getbook(): Observable<Book[]>{
     this.book$ = this.homeService.getAllBooks()
-    console.log(this.book$)
     return this.book$
     }
   ngOnInit(): void {
