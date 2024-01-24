@@ -70,7 +70,7 @@ export class SigninComponent implements OnInit {
       //enregistrer le token
       sessionStorage.setItem('loggedInUser', JSON.stringify(paylod));
       //redirection vers l'accueil
-      this.router.navigate(['/']);     
+      this.router.navigate(['/home']);     
     }
   }
 
@@ -87,7 +87,7 @@ export class SigninComponent implements OnInit {
           const token = res['token'];
           //enregistrer le token
           sessionStorage.setItem('token', token);          
-          this.router.navigate(['/'])
+          this.router.navigate(['/home'])
         }})
       if(HttpErrorResponse){
         this.onLoad=true

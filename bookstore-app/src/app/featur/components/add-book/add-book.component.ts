@@ -79,7 +79,7 @@ onSubmit() {
   // Assuming this.bookForm is a FormGroup
   const book_data = this.bookForm.value;
 
-  // Assuming this.bookFile is a FormControl representing the file input
+  // Assuming this.bookFnn````ile is a FormControl representing the file input
   const fileValue = this.bookFile.value;
 
   // Append the file to FormData
@@ -95,7 +95,7 @@ onSubmit() {
       }
     }
   ).subscribe(()=>{
-    console.log(formdata);
+    this.bookForm.reset()
   });
 }
 

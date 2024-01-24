@@ -8,6 +8,7 @@ import { SingleBookComponent } from './components/single-book/single-book.compon
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HomeService } from './services/home-service.service';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: AddBookComponent,
       multi: true
-    }
+    },
+    HomeService
   ]
 })
 export class FeaturModule { }

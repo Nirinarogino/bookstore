@@ -5,8 +5,6 @@ import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import multer, { diskStorage } from 'multer';
-import * as path from 'path';
-import { v4 as uuidv4 } from 'uuid'
 
 
 @Controller('book')
@@ -42,8 +40,8 @@ export class BookController {
     }
 // =================== to view all book at the bookstore ===============
 
-    @Get('view')
-    @UseGuards(JwtAuthGuard)
+    @Get('all')
+    // @UseGuards(JwtAuthGuard)
     async viewBook(){
         return await this.bookService.viewAllBooks()
     }

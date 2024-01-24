@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "auth",
+    path: "",
     loadChildren: () => import("./auth/auth.module")
       .then(module => module.AuthModule),
     title: "Bookstore | Authentication"
   },
   {
-    path: "",
+    path: "home",
     loadChildren: () => import("./featur/featur.module")
       .then(module => module.FeaturModule),
     title: "home | bookstore"
