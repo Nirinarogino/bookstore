@@ -83,23 +83,25 @@
         
         <div class="list">
             <h2 class="title_liste">Liste de Livre</h2>
-            <div class="book_content">
+
+            <div class="book_content"  *ngFor="let book of book$ | async">
                 <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
+                    <img src="../../../../../../bookstore-api/book_images/157_1706120435169.jpg" alt="hary_poter">
                 </div>
                 <div class="description">  
                         <mat-card-title>
-                            hary_poter
+                            {{book.title}}
                         </mat-card-title>
                         <mat-card-subtitle>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, magnam?
+                            {{ book.description | short}}
                         </mat-card-subtitle>
                         <div class="btn">
                             <button mat-raised-button color="primary">Details</button>
                         </div>
                 </div>
             </div>
-    </div>
+
+       </div>
 </div>
 </body>
 
