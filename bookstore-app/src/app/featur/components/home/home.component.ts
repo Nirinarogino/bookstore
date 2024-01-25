@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { Observable, map, observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Book } from 'src/app/models/book.model';
 import { HomeService } from '../../services/home-service.service';
 
@@ -11,8 +11,8 @@ import { HomeService } from '../../services/home-service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent  implements OnInit{
-
-  // ============= Variable ===========
+// ============= Variable ===========
+  mybook!: Book;  
   book$!: Observable<Book[]>;
 
  constructor(
