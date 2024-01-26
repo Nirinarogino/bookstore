@@ -86,7 +86,7 @@
 
             <div class="book_content"  *ngFor="let book of book$ | async">
                 <div class="book_image">
-                    <img src="../../../../../../bookstore-api/book_images/157_1706120435169.jpg" alt="hary_poter">
+                    <img [src]="book.coverPath" alt="hary_poter">
                 </div>
                 <div class="description">  
                         <mat-card-title>
