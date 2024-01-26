@@ -31,7 +31,7 @@ export class BookController {
     @UseGuards(JwtAuthGuard)
     async addBook(
         @Body() book: addBookDto,
-        @UserReq() user: any,    
+        @UserReq() user: any,
         @UploadedFile()file: Express.Multer.File,
     ){      
         // return await this.bookService.addBook(book,user,file);
