@@ -17,12 +17,8 @@ export class BookService {
         const data = await this.userRepository.findOneByOrFail({ userName: user.userName });
         // @ts-ignore
         const jsonData = JSON.parse(book.jsonData);
-        const newBook =  this.bookRepository.create(book);
-        console.log('json = ....',jsonData);
-        
-                newBook.title = book.title ,
-                console.log('mon book',book);
-                
+        const newBook =  this.bookRepository.create(book);        
+                newBook.title = book.title ,                
                 console.log('titre de la book',book.title);
                 newBook.title =jsonData.title
                 newBook.author=jsonData.author
@@ -31,7 +27,7 @@ export class BookService {
                 newBook.description=jsonData.description ,
                 newBook.category=jsonData.category,
                 newBook.language=jsonData.language ,
-                newBook.coverPath=file.path;
+                newBook.coverPath=`http://localhost:3000/book_images/${file.filename}`;
 
         
         if( data.role === 'admin') {
