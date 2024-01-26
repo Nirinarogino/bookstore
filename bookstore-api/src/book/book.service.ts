@@ -33,7 +33,6 @@ export class BookService {
         if( data.role === 'admin') {
             try {
                 newBook.availabilityStatus = 'available';
-                console.log('dans try',newBook);
                 
                 await this.bookRepository.save(newBook);
             } catch ( err ) {
