@@ -3,6 +3,7 @@ import { addBookDto } from './dto/addBook.dto';
 import { Books, User } from 'src/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { promises } from 'dns';
 
 @Injectable()
 export class BookService {
@@ -66,5 +67,13 @@ export class BookService {
             return backBook
         }
         throw new UnauthorizedException('You are not allowed to restore')
+    }
+    async findBookById( id: number ) : Promise<Books>{
+        const bookFind = await this.bookRepository.findOne({where: {bookId: id}})
+        if(bookFind){
+            console.log('trouver')
+            return  bookFind;
+        } 
+        throw new UnauthorizedException('You are not allowed to')
     }
 }

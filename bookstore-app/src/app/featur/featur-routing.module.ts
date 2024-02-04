@@ -6,7 +6,7 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'id',component: SingleBookComponent},
+  {path:':id',component: SingleBookComponent},
   {path:'add',component: AddBookComponent},
 ];
 

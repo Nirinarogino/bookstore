@@ -90,9 +90,14 @@ $ob-bg: #03C03C;
                     border-radius: 2rem;
                 }
             }
+            .image2{
+                    width: 25%;
+                    border-radius: 2rem;
+                    height: 100%;
+            }
             .image1, .image3{
                 margin-top: -5rem;
-                width: 15%;
+                width: 20%;
                 height: 70%;
             }
         }
@@ -123,7 +128,7 @@ $ob-bg: #03C03C;
                 align-items: flex-start;
                 justify-content: center;
                 button{
-                    width: 80%;
+                    width: 40%;
                     background-color: $ob-bg;
                     font-weight: bolder;
                 }
