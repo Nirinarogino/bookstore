@@ -96,7 +96,7 @@
                             {{ book.description | short}}
                         </mat-card-subtitle>
                         <div class="btn">
-                            <button mat-raised-button color="primary">Details</button>
+                            <button mat-raised-button color="primary" (click)="onViewDetails(book.bookId)">Details</button>
                         </div>
                 </div>
             </div>

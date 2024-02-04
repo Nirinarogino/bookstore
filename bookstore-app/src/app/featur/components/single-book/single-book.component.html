@@ -6,14 +6,14 @@
     <title>single | book</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" *ngIf="oneBook$ | async as book">
         <div class="liste_book" [ngClass]="{'clicked': isClicked}">
             <mat-card-title>
                 borrow book list
             </mat-card-title>
             <div class="book_content">
                 <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
+                    <img [src]="book.coverPath" alt="hary_poter">
                 </div>
                 <div class="description">                    
                         <div class="btn">
@@ -112,22 +112,18 @@
                     </mat-icon>
                 </h1>
                 <div class="image_principale">
-                    <img class="image1" src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                    <img class="image2" src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                    <img class="image3" src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">    
+                    <img class="image1" [src]="book.coverPath">
+                    <img class="image2" [src]="book.coverPath">
+                    <img class="image3" [src]="book.coverPath">    
                 </div>
             </div>
             <div class="down">
                 <mat-card-title>
-                    <h1>Title: hary_poter</h1>      
+                    <h1>Title: {{book.title}}</h1>      
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <span>Summary:</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Tenetur at maiores soluta eveniet atque voluptatem provident accusamus velit fuga commodi a dicta,
-                     iste consectetur perspiciatis quis labore reprehenderit dolorem itaque vel molestias ab! Voluptatibus
-                    placeat earum nulla provident quam, doloremque ad tempora dolorem amet quis quisquam tempore deleniti
-                    doloribus eum! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur, neque soluta culpa
-                   
+                    <span>Summary:</span>
+                    {{book.description}}
                 </mat-card-subtitle>
                 <div class="btn_footer">
                     <button mat-raised-button color="primary">borrow the book</button>
