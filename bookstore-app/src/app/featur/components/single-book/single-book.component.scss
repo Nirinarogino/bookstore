@@ -1,20 +1,56 @@
 $bg_single: rgba(128, 128, 128, 0.518);
 $bg-before: #93441a88;
 $ob-bg: #03C03C;
+.nav_barre{
+    margin:  1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 9vh;
+    box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.4);
+    width: 83%;
+    border-radius: 1rem;
+    border-bottom: 2px solid $bg_single;
+    .title{
+        width: 20%;
+    }
+    .home{
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 2rem;
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .book_number{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 5%;
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
 .container{
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     .liste_book{
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
         border-radius: 3rem;
-        height: 98%;
+        height: 95%;
         width: 40%;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-auto-rows: 5rem;
+        grid-auto-rows: 4rem;
         gap: 2rem;
         padding: 1rem;
         overflow-x: hidden;
@@ -27,17 +63,24 @@ $ob-bg: #03C03C;
         }
         .book_content{
             box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
-            border-radius: 2rem 2rem 0 0;
+            border-radius: 1.5rem;
             grid-column: 3 span;
             grid-row: 3 span;
             padding: .2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
             .book_image{
                 width: 100%;
-                height: 70%;
+                height: 60%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 img{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 2rem 2rem 0 0;
+                    width: 90%;
+                    height: 90%;
+                    border-radius: 1rem;
                 }
             }
             .description{
@@ -46,98 +89,86 @@ $ob-bg: #03C03C;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                button{
-                    width: 100%;
-                    margin-top: .5rem;
-                    background-color: $ob-bg;
+               .btn{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                p{
+                    font-size: .8rem;
+                    width: 90%;
+                    text-align: center;
                 }
+                button{
+                    width: 90%;
+                    background-color: $ob-bg;
+                    border-radius: 1rem;
+                    margin: 0 auto;
+                }
+               }
                 
             }
         }
     }
 
     .single_book {
-        width: 45%;
-        height: 98%;
+        width: 25%;
+        height: 95%;
         border-radius: 2rem;
-        background-color: $bg_single;
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
-        .up{
-            background-color: rgb(255, 255, 255);
+        .down{
             width: 100%;
-            height: 40%;
-            border-radius: 2rem 2rem 0 100%;
+            height: 100%;
             display: flex;
-            align-items: center;    
-            justify-content: center;
-            .side{
-                mat-icon{
-                    svg{
-                        display: none;
-                    }
-                }
-            }
-
-            .image_principale{
-                margin-top: 2rem;
-                border-radius: 2rem;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 2rem;
+            mat-card-title{
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
-                height: 100%;
+                justify-content: center;
                 width: 100%;
-                img{
-                    border-radius: 2rem;
+                h1{
+                    width: 100%;
+                    text-align: left;
+                    font-size: 1.2rem;
                 }
             }
-            .image2{
-                    width: 25%;
-                    border-radius: 2rem;
+            .image_principale{
+                width: 99%;
+                height: 45%;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .image1{
+                    width: 100%;
                     height: 100%;
-            }
-            .image1, .image3{
-                margin-top: -5rem;
-                width: 20%;
-                height: 70%;
-            }
-        }
-        .down{
-            padding: 2rem;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            flex-direction: column;
-
-            mat-card-subtitle{
-                margin-top: 2rem;
-                span{
-                    font-size: 1.5rem;
-                    font-weight: bolder;
+                    border-radius: 1rem;
                 }
-            }
-            mat-card-title{
-                font-size: 1.5rem;
-                font-weight: bolder;
-                text-align: left;
-                margin-bottom: 1rem;
             }
             .btn_footer{
-                margin-top: 2rem;
                 width: 100%;
                 display: flex;
                 align-items: flex-start;
                 justify-content: center;
+                height: 6vh;
                 button{
-                    width: 40%;
+                    width: 99%;
+                    height: 100%;
                     background-color: $ob-bg;
                     font-weight: bolder;
+                    border-radius: 1rem;
                 }
             }
         }
     }
     
 }
-@media all and (max-width:1023px) and (min-width: 950px) {
+@media screen and (max-width:1023px) and (min-width: 950px) {
     .book_content{
         grid-column: 6 span !important;
     } 

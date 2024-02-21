@@ -6,11 +6,29 @@
     <title>single | book</title>
 </head>
 <body>
+    <nav class="nav_barre">
+        <div class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+            </svg>
+        </div>
+        <div class="title">
+            <mat-card-title>
+            Your book borrow
+            </mat-card-title>
+        </div>
+        <div class="book_number">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-card-list" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+              </svg>
+        </div>
+    </nav>
     <div class="container" *ngIf="oneBook$ | async as book">
         <div class="liste_book" [ngClass]="{'clicked': isClicked}">
-            <mat-card-title>
+            <!-- <mat-card-title>
                 borrow book list
-            </mat-card-title>
+            </mat-card-title> -->
             <div class="book_content">
                 <div class="book_image">
                     <img [src]="book.coverPath" alt="hary_poter">
@@ -102,27 +120,14 @@
             </div>
         </div>
         <div class="single_book">
-            <div class="up">
-                <h1 class="side" (click)="click()">
-                    <mat-icon>
-                        <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-layout-sidebar-inset" viewBox="0 0 16 16">
-                            <path d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"/>
-                            <path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
-                          </svg>
-                    </mat-icon>
-                </h1>
-                <div class="image_principale">
-                    <img class="image1" [src]="book.coverPath">
-                    <img class="image2" [src]="book.coverPath">
-                    <img class="image3" [src]="book.coverPath">    
-                </div>
-            </div>
             <div class="down">
+                <div class="image_principale">
+                    <img class="image1" [src]="book.coverPath">    
+                </div>
                 <mat-card-title>
-                    <h1>Title: {{book.title}}</h1>      
+                    <h1>{{book.title}}</h1>      
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <span>Summary:</span>
                     {{book.description}}
                 </mat-card-subtitle>
                 <div class="btn_footer">
