@@ -14,6 +14,7 @@ import{MatSelectModule} from'@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [],
   exports: [
@@ -32,7 +33,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatMenuModule,
     MatSlideToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatBadgeModule
   ]
   
 })
