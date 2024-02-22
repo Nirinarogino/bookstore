@@ -1,6 +1,17 @@
 $bg_single: rgba(128, 128, 128, 0.518);
 $bg-before: #93441a88;
 $ob-bg: #03C03C;
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;    
+}
 .nav_barre{
     margin:  1rem auto;
     display: flex;
@@ -11,11 +22,17 @@ $ob-bg: #03C03C;
     width: 83%;
     border-radius: 1rem;
     border-bottom: 2px solid $bg_single;
-    .title{
-        width: 25%;
+    .text_tiping{
+        padding-left: 5rem;
+        width: 50%;
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        span{
+            font-size: 1.1rem;
+            color: blue;
+        }
     }
     .home{
         width: 15%;
