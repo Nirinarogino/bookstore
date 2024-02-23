@@ -1,6 +1,6 @@
 $bg_single: rgba(128, 128, 128, 0.518);
 $bg-before: #93441a88;
-$ob-bg: #03C03C;
+$ob-bg: rgba(0, 0, 255, 0.6);
 svg{
     width: 26px;
     height: 26px;
@@ -14,15 +14,24 @@ body{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-direction: column;    
+    flex-direction: column; 
+    background-image: url('../../../../assets/images/single_book_bg.jpg');
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 .nav_barre{
-    margin:  1rem auto;
+    // margin:  1rem auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     height: 16vh;
-   width: 100%;
+    width: 85%;
+   background-color: white;
+   border-radius: 0 0 2rem 2rem;
+   box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.4);
     .sous_nav{
+        margin-top: 1rem;
         grid-column: 2/7;
         display: flex;
         align-items: center;
@@ -59,7 +68,7 @@ body{
         justify-content: flex-start;
         padding-left: 2rem;
         span{
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: blue;
         }
     }
@@ -71,13 +80,14 @@ body{
     width: 100%;
     height: 80vh;
     .liste_book{
+        background-color: white;
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
         border-radius: 3rem;
-        height: 95%;
-        width: 40%;
+        height: 92%;
+        width: 45%;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-auto-rows: 4rem;
+        grid-auto-rows: 3.5rem;
         gap: 2rem;
         padding: 1rem;
         overflow-x: hidden;
@@ -92,7 +102,7 @@ body{
             box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
             border-radius: 1.5rem;
             grid-column: 3 span;
-            grid-row: 3 span;
+            grid-row: 4 span;
             padding: .2rem;
             display: flex;
             align-items: center;
@@ -106,16 +116,17 @@ body{
                 justify-content: center;
                 img{
                     width: 90%;
-                    height: 90%;
+                    height: 100%;
                     border-radius: 1rem;
+                    object-fit: fill;
+                    object-position: center;
                 }
             }
             .description{
-                height: 40%;
+                height: 20%;
                 width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: center;
                .btn{
                 width: 100%;
                 height: 100%;
@@ -126,7 +137,11 @@ body{
                 p{
                     font-size: .8rem;
                     width: 90%;
-                    text-align: center;
+                    text-align: left;
+                }
+                .back{
+                    color: blue;
+                    font-weight: 500;
                 }
                 button{
                     width: 90%;
@@ -144,9 +159,10 @@ body{
 
     .single_book {
         width: 25%;
-        height: 95%;
+        height: 92%;
         border-radius: 2rem;
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.4);
+        background-color: white;
         .down{
             width: 100%;
             height: 100%;
