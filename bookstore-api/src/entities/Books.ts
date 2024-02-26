@@ -1,5 +1,4 @@
 import { IsOptional } from "class-validator";
-import { timeStamp } from "console";
 import { timeStampEntity } from "src/book/DateBook/timeStamp.entity";
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
