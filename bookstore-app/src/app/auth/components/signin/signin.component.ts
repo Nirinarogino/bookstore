@@ -90,7 +90,9 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['/home'])
         }})
       if(HttpErrorResponse){
-        this.onLoad=true
-      }
+        setTimeout(() => {
+          this.onLoad=true; 
+        }, 2000);      
+    }
  }
 }
