@@ -4,6 +4,11 @@ $ob-bg: rgba(0, 0, 255, 0.6);
 svg{
     width: 26px;
     height: 26px;
+    cursor: pointer;
+    transition: 500ms;
+    &:hover{
+        transform: scale(1.2);
+    }
 }
 body{
     margin: 0;
