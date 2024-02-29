@@ -87,7 +87,7 @@ export class SigninComponent implements OnInit {
           const token = res['token'];
           //enregistrer le token
           sessionStorage.setItem('token', token);          
-          this.router.navigate(['/home'])
+          this.router.navigate(['/bookstore'])
         }})
       if(HttpErrorResponse){
         setTimeout(() => {
