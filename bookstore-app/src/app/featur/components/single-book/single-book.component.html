@@ -8,8 +8,8 @@
 <body>
     <nav class="nav_barre">
         <div class="sous_nav">
-            <div class="home"routerLink="/home">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" >
+            <div class="home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" (click)="goback()" >
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                 </svg>
             </div>
@@ -23,11 +23,17 @@
                         15
                 </span>
             </div> 
-            <div class="title">
+            <!-- <div class="title">
                 <mat-card-title>
                     Borowed book
                 </mat-card-title>
-            </div>  
+            </div>   -->
+            <div class="menue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-menu-button-wide" viewBox="0 0 16 16" (click)="click()">
+                    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5z"/>
+                    <path d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0M0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
         </div>    
         <ngx-typed-js class="text_tiping" [strings]="['Keep Your Books Safe and Preserve Your Imaginary Worlds', 'Keep Your Stories Safe: Shield Your Books, Treasure Your Tales.']" [loop]="true" [backDelay]="1500" [typeSpeed]="60">
            <span class="typing"></span>
@@ -41,7 +47,7 @@
                 </div>
                 <div class="description">                    
                         <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
+                            <p>Title: {{book.title}}</p>
                             <p class="back">return Date: 22-01-2022 </p>
                         </div>
                 </div>
@@ -125,7 +131,7 @@
                 </div>
             </div>
         </div>
-        <div class="single_book">
+        <div class="single_book" [ngClass]="{'blur': isClicked}">
             <div class="down">
                 <div class="image_principale">
                     <img class="image1" [src]="book.coverPath">    
@@ -140,7 +146,6 @@
                     <button mat-raised-button color="primary">borrow the book</button>
                 </div>
             </div>
-
         </div>
     </div>
     

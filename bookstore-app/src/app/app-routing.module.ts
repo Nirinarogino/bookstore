@@ -9,7 +9,7 @@ const routes: Routes = [
     title: "Bookstore | Authentication"
   },
   {
-    path: "home",
+    path: "bookstore",
     loadChildren: () => import("./featur/featur.module")
       .then(module => module.FeaturModule),
     title: "home | bookstore"

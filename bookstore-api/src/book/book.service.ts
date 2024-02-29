@@ -30,7 +30,7 @@ export class BookService {
                 newBook.language=jsonData.language ,
                 newBook.coverPath=`http://localhost:3000/book_images/${file.filename}`;
 
-        
+
         if( data.role === 'admin') {
             try {
                 newBook.availabilityStatus = 'available';
@@ -75,5 +75,9 @@ export class BookService {
             return  bookFind;
         } 
         throw new UnauthorizedException('You are not allowed to')
+    }
+
+    async FindBookByType(type: string){
+        this.bookRepository.createQueryBuilder()
     }
 }

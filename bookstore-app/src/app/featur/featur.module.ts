@@ -9,13 +9,15 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeService } from './services/home-service.service';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     SingleBookComponent,
-    AddBookComponent
+    AddBookComponent,
+    AdminPageComponent
   ],
   imports: [
     CommonModule,

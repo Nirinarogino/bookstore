@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as morgan from 'morgan'
 import * as express from 'express';
-// import * as helmet from 'helmet'
+import * as helmet from 'helmet'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,5 +13,6 @@ async function bootstrap() {
   }
   app.enableCors(corsOption)
   await app.listen(3000);
+
 }
 bootstrap();

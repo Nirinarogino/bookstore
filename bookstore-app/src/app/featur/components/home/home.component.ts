@@ -27,7 +27,7 @@ export class HomeComponent  implements OnInit{
     return this.book$
     }
     onViewDetails(bookId: number) { // Corrected parameter name to bookId
-      this.router.navigateByUrl(`home/${bookId}`); // Corrected typo and used bookId parameter
+      this.router.navigateByUrl(`bookstore/${bookId}`); // Corrected typo and used bookId parameter
   }
   ngOnInit(): void {
     this.getbook()

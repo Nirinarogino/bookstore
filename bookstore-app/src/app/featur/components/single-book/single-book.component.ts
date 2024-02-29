@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-single-book',
@@ -14,7 +15,8 @@ export class SingleBookComponent implements OnInit{
   oneBook$!: Observable<Book>
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
   id = +this.route.snapshot.params['id'];
 
@@ -25,6 +27,11 @@ export class SingleBookComponent implements OnInit{
     }))
     return this.oneBook$
   }
+
+  goback(){
+    this.router.navigate(['./bookstore'])
+  }
+
   ngOnInit(): void {
    this.getBookById()
   }
