@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { BookModule } from './book/book.module';
 import { HelmetMiddleware } from '@nest-middlewares/helmet';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
+import { BookBorrowedModule } from './book-borrowed/book-borrowed.module';
 
 dotenv.config()
 @Module({
@@ -29,6 +30,7 @@ dotenv.config()
     AuthModule,
     UserModule,
     BookModule,
+    BookBorrowedModule,
 
   ],
   controllers: [AppController],

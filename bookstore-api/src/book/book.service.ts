@@ -20,7 +20,6 @@ export class BookService {
         const jsonData = JSON.parse(book.jsonData);
         const newBook =  this.bookRepository.create(book);        
                 newBook.title = book.title ,                
-                console.log('titre de la book',book.title);
                 newBook.title =jsonData.title
                 newBook.author=jsonData.author
                 newBook.PublicationDAte =jsonData.publicationDAte,
