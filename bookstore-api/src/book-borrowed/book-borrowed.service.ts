@@ -9,14 +9,16 @@ export class BookBorrowedService {
     constructor(
         @InjectRepository(Books)
         private bookRepository: Repository<Books>,
+
         @InjectRepository(User)
         private userRepository: Repository<User>,
+
         @InjectRepository(BorrowedBook)
         private borrowedBookRepository: Repository<BorrowedBook>
     ){}
 
-    async borrowedBook(user: User, book_id: number, bookDate: borrowedDateDto ) {
-        const userWhoBorrowed = await this.userRepository.findOne({ where: { userId: user.userId } });
+    async borrowedBook(user_id: number, book_id: number, bookDate: borrowedDateDto ) {
+        const userWhoBorrowed = await this.userRepository.findOne({ where: { userId: user_id } });
         const bookWhichBorrowed = await this.bookRepository.findOne({ where:{ bookId: book_id } });
         const borrowedBook = this.borrowedBookRepository.create(bookDate);
         borrowedBook.book = bookWhichBorrowed;

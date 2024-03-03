@@ -11,6 +11,6 @@ export class BookBorrowedController {
 
     @Post()
     async borrowedBook(@UserReq() user: any,book_id: number,bookDate: borrowedDateDto ) {
-        return await this.bookBorrowedService.borrowedBook(user, book_id, bookDate)
+        return await this.bookBorrowedService.borrowedBook(user.userId, book_id, bookDate)
     }
 }
