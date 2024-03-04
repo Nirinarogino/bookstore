@@ -12,14 +12,14 @@ import { User } from "./User";
 
 @Index("BorrowedId", ["borrowedId"], { unique: true })
 @Entity("BorrowedBook", { schema: "DATABOOK" })
-export class BorrowedBook extends BaseEntity {
+export class BorrowedBook {
   @PrimaryGeneratedColumn({ type: "int", name: "BorrowedId" })
   borrowedId: number;
 
-  @Column("datetime", { name: "BorrowedDate" })
+  @Column("date", { name: "BorrowedDate" })
   borrowedDate: Date;
 
-  @Column("datetime", { name: "GiveBakcDate" })
+  @Column("date", { name: "GiveBakcDate" })
   giveBakcDate: Date;
 
   @OneToOne(()=> Books)
