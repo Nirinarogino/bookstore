@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "auth",
+    path: "",
     loadChildren: () => import("./auth/auth.module")
       .then(module => module.AuthModule),
     title: "Bookstore | Authentication"
   },
-  { path: "**", redirectTo: "auth", pathMatch: "full" }
+  {
+    path: "bookstore",
+    loadChildren: () => import("./featur/featur.module")
+      .then(module => module.FeaturModule),
+    title: "home | bookstore"
+  },
+
 ];
 
 @NgModule({
