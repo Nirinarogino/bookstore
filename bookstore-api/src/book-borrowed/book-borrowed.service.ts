@@ -1,4 +1,4 @@
-    import { Injectable } from '@nestjs/common';
+    import { Injectable, UnauthorizedException } from '@nestjs/common';
     import { InjectRepository } from '@nestjs/typeorm';
     import { Books, BorrowedBook, User } from 'src/entities';
     import { DeepPartial, Repository } from 'typeorm';
@@ -17,7 +17,6 @@
         ){}
 
         async borrowedBook(user_id: number, book_id: number) {
-
             const userWhoBorrowed = await this.userRepository.findOne({where: {userId: user_id}});
             const bookWhichBorrowed = await this.bookRepository.findOne({ where:{ bookId: book_id } });
             const newBorrowedBookPartial: DeepPartial<BorrowedBook> = {
@@ -29,5 +28,13 @@
               console.log(newBorrowedBookPartial);
             const newBorrowedBook =  this.borrowedBookRepository.create(newBorrowedBookPartial);
             return await this.borrowedBookRepository.save(newBorrowedBook);
+        }
+        getBookBorrowedByOneUser(user: any){
+            if(!user){
+                throw new UnauthorizedException('You must be logged in')
+            }
+             const book = this.borrowedBookRepository.find({where: {user: user}})
+             
+            //  return  this.bookRepository.find({where: {bookId: book}})
         }
     }
