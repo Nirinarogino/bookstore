@@ -16,8 +16,8 @@
             private borrowedBookRepository: Repository<BorrowedBook>
         ){}
 
-        async borrowedBook(user_id: number, book_id: number) {
-            const userWhoBorrowed = await this.userRepository.findOne({where: {userId: user_id}});
+        async borrowedBook(user:any, book_id: number) {
+            const userWhoBorrowed = await this.userRepository.findOne({where: {userId: user.userId}});
             const bookWhichBorrowed = await this.bookRepository.findOne({ where:{ bookId: book_id } });
             const newBorrowedBookPartial: DeepPartial<BorrowedBook> = {
                 borrowedDate: new Date(Date.now()),
@@ -29,12 +29,17 @@
             const newBorrowedBook =  this.borrowedBookRepository.create(newBorrowedBookPartial);
             return await this.borrowedBookRepository.save(newBorrowedBook);
         }
-        getBookBorrowedByOneUser(user: any){
-            if(!user){
+
+        async getBookBorrowedByOneUser(userNow: any){
+            if(!userNow){// verification si l'utilisateur est déjà connecté
                 throw new UnauthorizedException('You must be logged in')
             }
-             const book = this.borrowedBookRepository.find({where: {user: user}})
-             
-            //  return  this.bookRepository.find({where: {bookId: book}})
+             const book = await this.borrowedBookRepository.find({where:{user: userNow}}) // on cherche le borrowed book associer a cette user
+             console.log(book);
+            //  book.forEach( async (elt)=>{
+            //      console.log(elt.borrowedId);
+            //      const mybook = await this.bookRepository.findOne({where:{bookId: elt.book.bookId}})
+            //      console.log(mybook);
+            //  })
         }
     }
