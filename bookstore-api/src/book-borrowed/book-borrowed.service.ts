@@ -34,12 +34,13 @@
             if(!userNow){// verification si l'utilisateur est déjà connecté
                 throw new UnauthorizedException('You must be logged in')
             }
-             const book = await this.borrowedBookRepository.find({where:{user: userNow}}) // on cherche le borrowed book associer a cette user
-             console.log(book);
-            //  book.forEach( async (elt)=>{
-            //      console.log(elt.borrowedId);
-            //      const mybook = await this.bookRepository.findOne({where:{bookId: elt.book.bookId}})
-            //      console.log(mybook);
-            //  })
+             const book = await this.borrowedBookRepository.find({where:{user: userNow}}); // on cherche le borrowed book associer a cette user
+             const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
+             const borrowedBooks = await qb
+             .leftJoinAndSelect("BorrowedBook.book", "book")
+             .leftJoinAndSelect("BorrowedBook.user", "user")
+             .getMany();
+         console.log(borrowedBooks);
+            
         }
     }
