@@ -42,9 +42,8 @@
                     .leftJoinAndSelect("BorrowedBook.user", "user")
                     .where('user.userName = :name', { name })
                     .getMany();
-        
-                console.log(borrowedBooks);
-                return borrowedBooks; // Optionnel : retourne le tableau borrowedBooks
+                    const bookInfo = borrowedBooks.map(borrowedBook => borrowedBook.book);// pour recuperer seulement le book
+                return bookInfo; // Optionnel : retourne le tableau borrowedBooks
             } catch (error) {
                 // Gère les erreurs potentielles
                 console.error(error);
