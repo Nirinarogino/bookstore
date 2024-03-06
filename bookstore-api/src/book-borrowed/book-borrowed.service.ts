@@ -50,5 +50,12 @@
                 throw error; // Renvoie l'erreur pour qu'elle soit gérée par l'appelant
             }
         }
+
+        async getBookByCategory(bookCategory: any){
+            console.log(bookCategory);
+            const bookCathegory = await this.bookRepository.find({where:{category: bookCategory}})
+            console.log(bookCathegory);
+            return bookCathegory
+        }
         
     }
