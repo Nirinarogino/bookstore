@@ -30,17 +30,26 @@
             return await this.borrowedBookRepository.save(newBorrowedBook);
         }
 
-        async getBookBorrowedByOneUser(userNow: any){
-            if(!userNow){// verification si l'utilisateur est déjà connecté
-                throw new UnauthorizedException('You must be logged in')
+        async getBookBorrowedByOneUser(userNow: any) {
+            try {
+                if (userNow === undefined || userNow === null) {
+                    throw new UnauthorizedException('Vous devez être connecté');
+                }
+                const name = userNow.userName
+                const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
+                const borrowedBooks = await qb
+                    .leftJoinAndSelect("BorrowedBook.book", "book")
+                    .leftJoinAndSelect("BorrowedBook.user", "user")
+                    .where('user.userName = :name', { name })
+                    .getMany();
+        
+                console.log(borrowedBooks);
+                return borrowedBooks; // Optionnel : retourne le tableau borrowedBooks
+            } catch (error) {
+                // Gère les erreurs potentielles
+                console.error(error);
+                throw error; // Renvoie l'erreur pour qu'elle soit gérée par l'appelant
             }
-             const book = await this.borrowedBookRepository.find({where:{user: userNow}}); // on cherche le borrowed book associer a cette user
-             const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
-             const borrowedBooks = await qb
-             .leftJoinAndSelect("BorrowedBook.book", "book")
-             .leftJoinAndSelect("BorrowedBook.user", "user")
-             .getMany();
-         console.log(borrowedBooks);
-            
         }
+        
     }
