@@ -23,4 +23,10 @@ export class BookBorrowedController {
     getBorrowedBook(@UserReq() user: any){
         return  this.bookBorrowedService.getBookBorrowedByOneUser(user);
     }
+    @Get(':cat')
+    getBookByCategory(
+        @Body() bookByCategory: any,
+    ){
+        return  this.bookBorrowedService.getBookByCategory(bookByCategory.Category);
+    }
 }
