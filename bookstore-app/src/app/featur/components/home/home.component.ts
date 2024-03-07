@@ -13,8 +13,7 @@ import { HomeService } from '../../services/home-service.service';
 export class HomeComponent  implements OnInit, AfterViewInit{
 // ============= Variable ===========
   mybook!: Book;  
-  book$!: Observable<Book[]>;
-  bookByCategory!: any;
+  book$!: any;
   @Input() Book!: Book;
 
  constructor(
@@ -39,8 +38,6 @@ export class HomeComponent  implements OnInit, AfterViewInit{
       })
   }
 
-
-
   getbook(): Observable<Book[]>{
     this.book$ = this.homeService.getAllBooks()
     return this.book$
@@ -49,12 +46,8 @@ export class HomeComponent  implements OnInit, AfterViewInit{
       this.router.navigateByUrl(`bookstore/${bookId}`); // Corrected typo and used bookId parameter
   }
   async getBookByCategory(category: string){
-      this.bookByCategory = await this.homeService.getBookByCategory(category)
-          console.log(this.bookByCategory.subscribe((res:any)=>{
-              console.log(res)
-
-      }))
-   return this.bookByCategory
+      this.book$ = await this.homeService.getBookByCategory(category)
+      return this.book$
   }
 
   ngOnInit(): void {
