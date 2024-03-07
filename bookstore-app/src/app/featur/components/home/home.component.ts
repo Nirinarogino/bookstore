@@ -14,6 +14,7 @@ export class HomeComponent  implements OnInit{
 // ============= Variable ===========
   mybook!: Book;  
   book$!: Observable<Book[]>;
+  bookByCategory!: any;
   @Input() Book!: Book;
 
  constructor(
@@ -29,7 +30,16 @@ export class HomeComponent  implements OnInit{
     onViewDetails(bookId: number) { // Corrected parameter name to bookId
       this.router.navigateByUrl(`bookstore/${bookId}`); // Corrected typo and used bookId parameter
   }
+  async getBookByCategory(){
+   const category = 'Fantasy'
+   this.bookByCategory = await this.homeService.getBookByCategory(category)
+   console.log(this.bookByCategory.subscribe((res:any)=>{
+    console.log(res)
+   }))
+   return this.bookByCategory
+  }
   ngOnInit(): void {
     this.getbook()
+    this.getBookByCategory()
   }
 }

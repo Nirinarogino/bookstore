@@ -54,6 +54,7 @@ export class SingleBookComponent implements OnInit{
     this.borrowed$ = await this.singleService.getAllBookBorrowebByOneUser()
     return this.borrowed$;
   }
+
   ngOnInit(): void {
     this.getBookById()
     this.getBookBorrowedByOneUser()
