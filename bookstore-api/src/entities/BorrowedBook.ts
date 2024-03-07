@@ -25,7 +25,7 @@ export class BorrowedBook {
   @OneToOne(()=> Books)
   @JoinColumn()
   book: Books
-
+  
   @OneToOne(()=> User)
   @JoinColumn()
   user: User
