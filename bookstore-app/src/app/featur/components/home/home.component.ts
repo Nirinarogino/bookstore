@@ -1,5 +1,5 @@
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/models/book.model';
 import { HomeService } from '../../services/home-service.service';
@@ -20,19 +20,18 @@ export class HomeComponent  implements OnInit, AfterViewInit{
   private route: ActivatedRoute,
   private homeService: HomeService,
   private router:Router,
-  private renderer: Renderer2
   ){}
  
   @ViewChild('category') category!: ElementRef;
   
    selectByCategory(){
-      const div = this.category.nativeElement
-      const container = div.querySelectorAll(`.cat`);
-      container.forEach((elt:any)=>{
-        elt.addEventListener('click', ()=>{
-          const span = elt.querySelector('span')
-         const category = span.innerHTML
-          this.getBookByCategory(category)
+      const div = this.category.nativeElement // selectionner le container des catergory de book
+      const container = div.querySelectorAll(`.cat`); // selectionner les elt qui ont la classe cat
+      container.forEach((elt:any)=>{ // a chaque elt du container 
+        elt.addEventListener('click', ()=>{ // ajouter une evenement clique
+          const span = elt.querySelector('span') // selectionner l'element span dans chauqe element cliquer
+         const category = span.innerHTML // contenu du span
+          this.getBookByCategory(category) // appelle au fonction getBookCategory
          
         })
       })
@@ -42,8 +41,8 @@ export class HomeComponent  implements OnInit, AfterViewInit{
     this.book$ = this.homeService.getAllBooks()
     return this.book$
     }
-    onViewDetails(bookId: number) { // Corrected parameter name to bookId
-      this.router.navigateByUrl(`bookstore/${bookId}`); // Corrected typo and used bookId parameter
+    onViewDetails(bookId: number) { 
+      this.router.navigateByUrl(`bookstore/${bookId}`); 
   }
   async getBookByCategory(category: string){
       this.book$ = await this.homeService.getBookByCategory(category)

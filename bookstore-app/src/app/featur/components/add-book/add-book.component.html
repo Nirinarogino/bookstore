@@ -27,8 +27,21 @@
         </div>
         <div class="content2">
             <div class="input_container">
-                <label for="category">Category</label>
-                <input type="text" formControlName="category" id="category" class="input_class" placeholder="Enter category">
+                <!-- <label for="category">Category</label>
+                <input type="text" formControlName="category" id="category" class="input_class" placeholder="Enter category"> -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                        <mat-option value="Science-Fiction"> Science-Fiction </mat-option>
+                        <mat-option value="Divertissement"> Divertissement </mat-option>
+                        <mat-option value="Historique"> Historique </mat-option>
+                        <mat-option value="Biography"> Biography </mat-option>
+                        <mat-option value="Romance"> Romance </mat-option>
+                        <mat-option value="Fantasy"> Fantasy </mat-option>
+                        <mat-option value="Fiction"> Fiction </mat-option>
+                        <mat-option value="Poésie"> Poésie </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div class="input_container">
                 <label for="publicationDAte">Publication date</label>

@@ -4,13 +4,15 @@ import {
   Entity,
   Index,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Books } from "./Books";
 import { User } from "./User";
+import { IsNotEmpty } from "class-validator";
 
-@Index("BorrowedId", ["borrowedId"], { unique: true })
+@Index("BorrowedId", ["borrowedId"])
 @Entity("BorrowedBook", { schema: "DATABOOK" })
 export class BorrowedBook {
   @PrimaryGeneratedColumn({ type: "int", name: "BorrowedId" })
@@ -24,10 +26,11 @@ export class BorrowedBook {
 
   @OneToOne(()=> Books)
   @JoinColumn()
+  @IsNotEmpty()
   book: Books
   
-  @OneToOne(()=> User)
+  @ManyToOne(()=> User)
   @JoinColumn()
+  @IsNotEmpty()
   user: User
-  
 }
