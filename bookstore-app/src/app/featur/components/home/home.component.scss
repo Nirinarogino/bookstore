@@ -128,10 +128,35 @@ input{
         display: grid;
         grid-template-columns: repeat(12, 1fr); 
         gap: 1rem;
-        .cat1, .cat2, .cat3, .cat4, .cat5, .cat6{
+        .cat1{
+            // background-image: url('../../../../assets/images/categorie.jpeg') !important;
+            background-image: url('https://images.unsplash.com/photo-1601315488950-3b5047998b38?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2NpZW5jZSUyMGZpY3Rpb258ZW58MHx8MHx8fDA%3D');
+        }
+       
+        .cat2{
+            background-image: url('https://images.unsplash.com/photo-1578374173713-32f6ae6f3971?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2NpZW5jZSUyMGZpY3Rpb258ZW58MHx8MHx8fDA%3D');
+        }
+        .cat3{
+            background-image: url('https://plus.unsplash.com/premium_photo-1682308191763-2813d4a2e746?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZmFudGFzeXxlbnwwfHwwfHx8MA%3D%3D');
+        }
+        .cat4{
+            background-image: url('https://plus.unsplash.com/premium_photo-1678230042085-826c5e8e140a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGlzdG9yaXF1ZXxlbnwwfHwwfHx8MA%3D%3D');
+        }
+        .cat5{
+            background-image: url('https://images.unsplash.com/photo-1533271802434-53997a5f9e6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cG9lc2llfGVufDB8fDB8fHww');
+        }
+         .cat6{
+            background-image: url('../../../../assets/images/biography.jpeg') !important;
+        }
+        .cat7{
+            background-image: url('https://media.istockphoto.com/id/1459276800/fr/photo/couple-regardant-le-coucher-du-soleil-%C3%A0-la-piscine-%C3%A0-d%C3%A9bordement-sainte-lucie-couple-en.webp?b=1&s=170667a&w=0&k=20&c=mq3jXDVFkcebpXv23-aqpCYxff-pLWSmPbwSodkLqtg=');
+        }
+        .cat8{
+            background-image: url('https://images.unsplash.com/photo-1620336655052-b57986f5a26a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJhbmRlJTIwZGVzc2luZXxlbnwwfHwwfHx8MA%3D%3D');
+        }
+
+        .cat{
             grid-column: 6 span;
-            // background-color: white;
-            background-image: url('../../../../assets/images/categorie.jpeg') !important;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -145,11 +170,12 @@ input{
                 font-size: 1.4rem;
                 width: 100%;
                 height: 50%;
-                background-color: #2727278a;
+                background-color: #272727b2;
                 color: white;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border-radius: .5rem;
             }
         }     
     }
@@ -230,9 +256,12 @@ input{
         gap: .5rem;
         padding: .5rem;
         overflow-y: scroll;
-        .cat1, .cat2, .cat3, .cat4, .cat5, .cat6{
+        .cat{
             grid-column: 12 span;
             height: 10vw;
+            .title_categorie{
+                font-size: .9rem;
+               }
             
         }   
        }
@@ -274,7 +303,7 @@ input{
             }
             .down{
                 height: 100%;
-                .cat1, .cat2, .cat3, .cat4, .cat5, .cat6{
+                .cat{
                    grid-column: 4 span;
                    .title_categorie{
                     font-size: .9rem;

@@ -63,7 +63,7 @@
                     <h1>{{book.title}}</h1>      
                 </mat-card-title>
                 <mat-card-subtitle>
-                    {{book.description}}
+                    {{book.description | short}}
                 </mat-card-subtitle>
                 <div class="btn_footer">
                     <button mat-raised-button color="primary" (click)="borrowedBook()">borrow the book</button>
