@@ -8,9 +8,8 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'add',component: AddBookComponent},
-  {path:':id',component: SingleBookComponent},
-  {path:'admin', component: AdminPageComponent}
-
+  {path:'admin', component: AdminPageComponent},
+  {path:':id',component: SingleBookComponent}
 ];
 
 @NgModule({
