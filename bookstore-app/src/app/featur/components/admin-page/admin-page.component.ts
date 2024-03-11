@@ -7,18 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit{
-  AlluserAndBook: any;
-   constructor(private http: HttpClient){}
-  ngOnInit(): void {
+  AlluserAndBook!: any;
+  token = sessionStorage.getItem('token');     
+   constructor(
+      private http: HttpClient
+    ){}
+
+ 
+  getAllUserAndBokk(){
+     this.AlluserAndBook =  this.http.get('http://localhost:3000/admin',{
+      headers: {
+        "Authorization": `Bearer ${this.token}`
+      }
+     })
+     console.log(this.AlluserAndBook.subscribe());
+
+     return this.AlluserAndBook;
+      
+   }
+   ngOnInit(): void {
     this.getAllUserAndBokk()
   }
-  getAllUserAndBokk(){
-     const token = sessionStorage.getItem('token');     
-     this.AlluserAndBook = this.http.get('http://localhost:3000/admin',{
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-     }).subscribe()
-     console.log('okok',this.AlluserAndBook);
-   }
 }

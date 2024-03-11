@@ -21,7 +21,6 @@ export class AdminService {
                 const borrowedBooks = await qb
                 .leftJoinAndSelect("BorrowedBook.book", "book")
                 .leftJoinAndSelect("BorrowedBook.user", "user")
-                .where('user.userName = :name', { name })
                 .getMany();
                 const borrowedBookInfo = borrowedBooks.map(borrowedBook => {
                     delete borrowedBook.user.password
