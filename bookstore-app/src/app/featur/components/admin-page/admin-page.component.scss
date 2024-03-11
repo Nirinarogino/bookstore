@@ -19,6 +19,42 @@ body{
             width: 5% !important;
             height: 100%;
             border-right: 1px solid;
+            .content_side_barre{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                height: 40%;
+                width: 100%;
+                .emprunt{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    background-color: #2727277a;
+                    position: relative;
+                    &::before{
+                        position: absolute;
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        background-color:#2727277a ;
+                        z-index: -1;
+                        border-radius: 50%;
+                        transition: 500ms;
+                    }
+                    &:hover::before{
+                        width: 50px;
+                        height: 50px;
+                    }
+                    svg{
+                        width: 26px;
+                        height: 26px;
+                    }
+                }
+            }
         }
         .demande{
             width: 95%;
