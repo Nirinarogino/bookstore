@@ -59,18 +59,10 @@
                             <span class="book_status"> Type </span>
                             <span class="valide">Validity</span>
                         </div>
-                        <div class="user_info">
-                            <span class="name">Nandraina22</span>
-                            <span class="book_title">Harry Poter </span>
+                        <div class="user_info" *ngFor="let bookAndUser of AlluserAndBook| async">
+                            <span class="name">{{bookAndUser.user.userName}}</span>
+                            <span class="book_title">{{bookAndUser.book.title}}</span>
                             <span class="book_status"> Emprunt </span>
-                            <mat-card-actions>
-                                <mat-checkbox class="example-margin" color="primary"></mat-checkbox>
-                             </mat-card-actions>
-                        </div>
-                        <div class="user_info">
-                            <span class="name">Nandraina22</span>
-                            <span class="book_title">Harry Poter </span>
-                            <span class="book_status"> A Rendre </span>
                             <mat-card-actions>
                                 <mat-checkbox class="example-margin" color="primary"></mat-checkbox>
                              </mat-card-actions>
