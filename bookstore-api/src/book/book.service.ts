@@ -3,7 +3,6 @@ import { addBookDto } from './dto/addBook.dto';
 import { Books, User } from 'src/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { promises } from 'dns';
 
 @Injectable()
 export class BookService {
@@ -79,4 +78,5 @@ export class BookService {
     async FindBookByType(type: string){
         this.bookRepository.createQueryBuilder()
     }
+   
 }
