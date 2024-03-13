@@ -16,42 +16,43 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
     ){}
   @ViewChild('container') container!: ElementRef
   @ViewChild('container_btn') containerBtn!: ElementRef
+  test!: number;
+  slide(){
+    const allContent = this.container.nativeElement.querySelectorAll('.content');
+    allContent.forEach((element: any) => {
+        const divClass = element.classList.value
+        const classTest  = divClass.toLowerCase().includes('visible')
+        if(!classTest){
+             allContent.forEach((elt: any)=>{
+              this.renderer.removeClass(elt,'visible')
+            })
+        this.renderer.addClass(element,'visible')
+        }   
+    });
+  }
   click(){
       const allBtn = this.containerBtn.nativeElement.querySelectorAll('.emprunt')
+      const testeBtn = Array.from(this.containerBtn.nativeElement.querySelectorAll('.emprunt'));
       allBtn.forEach((btn:any)=>{
             btn.addEventListener('click', ()=>{
               const btnClass = btn.classList.value
               const classTest  = btnClass.toLowerCase().includes('visible')
+              const style  = btnClass.toLowerCase().includes('style')
               if(!classTest){
                   allBtn.forEach((elt: any)=>{
-                    this.renderer.removeClass(elt,'visible')
+                      this.renderer.removeClass(elt,'visible')
+                      this.renderer.removeClass(elt,'style')
                   })
-                  this.renderer.addClass(btn,'visible')
+              this.renderer.addClass(btn,'visible')
+              this.renderer.addClass(btn,'style')
+              this.test = testeBtn.indexOf(btn);
               }   
-            })
+          })
       })
   }
-    
-    slide(){
-      const allContent = this.container.nativeElement.querySelectorAll('.content');
-      allContent.forEach((element: any) => {
-        const classeTeste = element.classList.value
-      });
-
-    }
-  // ensuite selectionner le div  a partir du container 
-  // allContent = this.container.nativeElement.querySelectorAll('.content')
- // donc on a un tableau d'un element html
- // a chaque element du tableau verfions s'il contient la classe visible
- /*
-    si oui on suprime la classe visible et ajouter la classe hidden
-    si non on on fait rien
-
-  */
 
   ngAfterViewInit(): void {
     this.click()
-    this.slide();
   } 
   getAllUserAndBokk(){
      this.AlluserAndBook =  this.http.get('http://localhost:3000/admin',{
