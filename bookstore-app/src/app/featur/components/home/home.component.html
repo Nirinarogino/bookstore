@@ -71,24 +71,30 @@
                     Categorie
                 </mat-card-title>
             </div>
-            <div class="down">
-                <div class="cat1">
-                    <span class="title_categorie">Science-fiction</span>
+            <div class="down" #category>
+                <div class="cat1 cat">
+                    <span class="title_categorie">Science-Fiction</span>
                 </div>
-                <div class="cat2">
-                    <span class="title_categorie">Roman</span>
+                <div class="cat2 cat">
+                    <span class="title_categorie">Fiction</span>
                 </div>
-                <div class="cat3">
+                <div class="cat3 cat">
+                    <span class="title_categorie">Fantasy</span>
+                </div>
+                <div class="cat4 cat">
+                    <span class="title_categorie">Historique</span>
+                </div>
+                <div class="cat5 cat">
                     <span class="title_categorie">Poésie</span>
                 </div>
-                <div class="cat4">
-                    <span class="title_categorie">Literature</span>
+                <div class="cat6 cat">
+                    <span class="title_categorie">Biographie</span>
                 </div>
-                <div class="cat5">
+                <div class="cat7 cat">
+                    <span class="title_categorie">Romance</span>
+                </div>
+                <div class="cat8 cat">
                     <span class="title_categorie">Divertissement</span>
-                </div>
-                <div class="cat6">
-                    <span class="title_categorie">Spirutialité</span>
                 </div>
             </div>
         </div>
@@ -102,7 +108,7 @@
                 </div>
                 <div class="description">  
                         <mat-card-title>
-                            {{book.title}}
+                            {{book.title | titlecase}}
                         </mat-card-title>
                         <mat-card-subtitle>
                             {{ book.description | short}}
@@ -112,6 +118,7 @@
                         </div>
                 </div>
             </div>
+            
        </div>
 </div>
 </body>

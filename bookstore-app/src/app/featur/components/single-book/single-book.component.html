@@ -41,96 +41,19 @@
     </nav>
     <div class="container" *ngIf="oneBook$ | async as book">
         <div class="liste_book" [ngClass]="{'clicked': isClicked}">
-            <div class="book_content">
+            <div class="book_content" *ngFor="let borrowed of borrowed$ | async">
                 <div class="book_image">
-                    <img [src]="book.coverPath" alt="hary_poter">
-                </div>
-                <div class="description">                    
-                        <div class="btn">
-                            <p>Title: {{book.title}}</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">                    
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">                    
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">                    
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">                    
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
+                    <img [src]="borrowed.book.coverPath" alt="hary_poter">
                 </div>
                 <div class="description">  
                         <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">  
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
-                        </div>
-                </div>
-            </div>
-            <div class="book_content">
-                <div class="book_image">
-                    <img src="../../../../assets/images/hary_poter.jpeg" alt="hary_poter">
-                </div>
-                <div class="description">  
-                        <div class="btn">
-                            <p>borrow date: 10-01-2022</p>
-                            <p class="back">return Date: 22-01-2022 </p>
+                            <p>borrow date: {{borrowed.borrowedDate}}</p>
+                            <p class="back">return Date: {{borrowed.giveBakcDate}}</p>
                         </div>
                 </div>
             </div>
         </div>
+
         <div class="single_book" [ngClass]="{'blur': isClicked}">
             <div class="down">
                 <div class="image_principale">
@@ -140,10 +63,10 @@
                     <h1>{{book.title}}</h1>      
                 </mat-card-title>
                 <mat-card-subtitle>
-                    {{book.description}}
+                    {{book.description | short}}
                 </mat-card-subtitle>
                 <div class="btn_footer">
-                    <button mat-raised-button color="primary">borrow the book</button>
+                    <button mat-raised-button color="primary" (click)="borrowedBook()">borrow the book</button>
                 </div>
             </div>
         </div>

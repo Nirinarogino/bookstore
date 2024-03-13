@@ -85,7 +85,6 @@ onSubmit() {
   // Append the file to FormData
   formdata.append("file", fileValue);
   const token = sessionStorage.getItem('token');
-
   // Append the JSON data to FormData
   formdata.append("jsonData", JSON.stringify(book_data));
   this.Http.post('http://localhost:3000/book/add', formdata,

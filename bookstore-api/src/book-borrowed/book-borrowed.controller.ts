@@ -23,7 +23,7 @@ export class BookBorrowedController {
     getBorrowedBook(@UserReq() user: any){
         return  this.bookBorrowedService.getBookBorrowedByOneUser(user);
     }
-    @Get(':cat')
+    @Post(':cat')
     getBookByCategory(
         @Body() bookByCategory: any,
     ){
