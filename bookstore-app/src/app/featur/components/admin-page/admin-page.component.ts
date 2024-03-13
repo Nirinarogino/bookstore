@@ -14,30 +14,44 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
       private http: HttpClient,
       private renderer: Renderer2
     ){}
-  @ViewChild('haut') haut!: ElementRef
-  @ViewChild('bas') bas!: ElementRef
-  @ViewChild('book') book!: ElementRef
-  @ViewChild('user') user!: ElementRef
-  switchDiv(elt: any, deleteClass: any, addClass: any){
-      elt.nativeElement.addEventListener('click',()=>{
-      const classNow = deleteClass.nativeElement.classList.value
-      const classTest  = classNow.toLowerCase().includes('visible')
-      if(classTest){
-
-          this.renderer.removeClass(deleteClass.nativeElement, 'visible')
-          this.renderer.addClass(deleteClass.nativeElement, 'hidden')
-          this.renderer.removeClass(addClass.nativeElement, 'hidden')
-          this.renderer.addClass(addClass.nativeElement, 'visible')
-      }
-      else{
-        console.log(classTest);
-        
-      }
-    })
+  @ViewChild('container') container!: ElementRef
+  @ViewChild('container_btn') containerBtn!: ElementRef
+  click(){
+      const allBtn = this.containerBtn.nativeElement.querySelectorAll('.emprunt')
+      allBtn.forEach((btn:any)=>{
+            btn.addEventListener('click', ()=>{
+              const btnClass = btn.classList.value
+              const classTest  = btnClass.toLowerCase().includes('visible')
+              if(!classTest){
+                  allBtn.forEach((elt: any)=>{
+                    this.renderer.removeClass(elt,'visible')
+                  })
+                  this.renderer.addClass(btn,'visible')
+              }   
+            })
+      })
   }
+    
+    slide(){
+      const allContent = this.container.nativeElement.querySelectorAll('.content');
+      allContent.forEach((element: any) => {
+        const classeTeste = element.classList.value
+      });
+
+    }
+  // ensuite selectionner le div  a partir du container 
+  // allContent = this.container.nativeElement.querySelectorAll('.content')
+ // donc on a un tableau d'un element html
+ // a chaque element du tableau verfions s'il contient la classe visible
+ /*
+    si oui on suprime la classe visible et ajouter la classe hidden
+    si non on on fait rien
+
+  */
+
   ngAfterViewInit(): void {
-    this.switchDiv(this.user, this.haut, this.bas)
-    this.switchDiv(this.book, this.bas, this.haut)
+    this.click()
+    this.slide();
   } 
   getAllUserAndBokk(){
      this.AlluserAndBook =  this.http.get('http://localhost:3000/admin',{
@@ -51,5 +65,5 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
    ngOnInit(): void {
     this.getAllUserAndBokk()
     
-  }
+  } 
 }
