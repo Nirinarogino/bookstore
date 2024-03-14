@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,7 +15,8 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
   token = sessionStorage.getItem('token');     
    constructor(
       private http: HttpClient,
-      private renderer: Renderer2
+      private renderer: Renderer2,
+      private router: Router
     ){}
   @ViewChild('container') container!: ElementRef
   @ViewChild('container_btn') containerBtn!: ElementRef
@@ -52,7 +54,9 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
           })
       })
   }
-
+  goback(){
+    this.router.navigate(['./bookstore'])
+  }
   ngAfterViewInit(): void {
     this.click()
     this.getAllUser()
