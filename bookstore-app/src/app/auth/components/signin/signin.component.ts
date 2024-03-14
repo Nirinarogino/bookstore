@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environement } from 'src/environements/environement';
+import { SigninService } from '../../services/signin.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,8 @@ export class SigninComponent implements OnInit {
   constructor(
       private router: Router,
       private formBuilder: FormBuilder,
-      private http: HttpClient
+      private http: HttpClient,
+      private signinService: SigninService
   ) {}
   // ========= VARIABLE ===========
 
@@ -27,7 +29,6 @@ export class SigninComponent implements OnInit {
   
   envId = environement.client_id
   onLoad!: boolean;
-
   //========= METHODE ===========
   unitForm(){
     this.userNameCtrl = this.formBuilder.control('');
@@ -44,6 +45,9 @@ export class SigninComponent implements OnInit {
       password: this.passwordCtrl
     })
   }
+  public decodeMyToken(token: any){
+   return this.signinService.decodeMyToken(token)
+ }
 
   // intialised the google account
   unitGoogle(){
@@ -85,9 +89,15 @@ export class SigninComponent implements OnInit {
    this.http.post('http://localhost:3000/auth', infouser).subscribe((res:any) => {
         if(res && typeof res === 'object' && 'token' in res){
           const token = res['token'];
+          const usertype = this.decodeMyToken(token);
+          console.log(usertype.role);
+          if(usertype.role ==='admin'){
+            this.router.navigate(['/bookstore/admin'])
+          } else{
+            this.router.navigate(['/bookstore'])
+          }
           //enregistrer le token
           sessionStorage.setItem('token', token);          
-          this.router.navigate(['/bookstore'])
         }})
       if(HttpErrorResponse){
         setTimeout(() => {
