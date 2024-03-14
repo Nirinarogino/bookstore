@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/models/book.model';
 import { HomeService } from '../../services/home-service.service';
+import { SigninService } from 'src/app/auth/services/signin.service';
 
 
 @Component({
@@ -14,16 +15,24 @@ export class HomeComponent  implements OnInit, AfterViewInit{
 // ============= Variable ===========
   mybook!: Book;  
   book$!: any;
+  token = sessionStorage.getItem('token')
+  adminTeste !: boolean;
   @Input() Book!: Book;
 
  constructor(
   private route: ActivatedRoute,
   private homeService: HomeService,
   private router:Router,
+  private signinService: SigninService,
   ){}
  
   @ViewChild('category') category!: ElementRef;
-  
+  testeAdmin(){
+    const teste = this.signinService.decodeMyToken(this.token)
+    if(teste.role  === 'admin'){
+      this.adminTeste = true
+    }
+  }
    selectByCategory(){
       const div = this.category.nativeElement // selectionner le container des catergory de book
       const container = div.querySelectorAll(`.cat`); // selectionner les elt qui ont la classe cat
@@ -51,6 +60,7 @@ export class HomeComponent  implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.getbook()
+    this.testeAdmin()
   }
   ngAfterViewInit(): void {
     this.selectByCategory()
