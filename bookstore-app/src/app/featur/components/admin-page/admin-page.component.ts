@@ -9,6 +9,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 export class AdminPageComponent implements OnInit, AfterViewInit{
   
   AlluserAndBook!: any;
+  AllUser!: any;
+  
   token = sessionStorage.getItem('token');     
    constructor(
       private http: HttpClient,
@@ -53,7 +55,9 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit(): void {
     this.click()
-  } 
+    this.getAllUser()
+  }
+
   getAllUserAndBokk(){
      this.AlluserAndBook =  this.http.get('http://localhost:3000/admin',{
       headers: {
@@ -61,10 +65,20 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
       }
      })
      return this.AlluserAndBook;
-      
+   }
+   getAllUser(){
+      this.AllUser = this.http.get('http://localhost:3000/admin/all',{
+        headers: {
+          "Authorization": `Bearer ${this.token}`
+        }
+      })
+      return this.AllUser
    }
    ngOnInit(): void {
     this.getAllUserAndBokk()
     
-  } 
+  }
+  checked(): any {
+    return '#029197'
+  }
 }

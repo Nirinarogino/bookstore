@@ -11,7 +11,6 @@ export class UserService {
     @InjectRepository(User)
     private userRepository: Repository<User>
   ) {}
-
   async  subscribe(userData: SubscribeDto): Promise<User> {
     const salt = await bcrypt.genSalt();
     const password = await bcrypt.hash(userData.password, salt);
