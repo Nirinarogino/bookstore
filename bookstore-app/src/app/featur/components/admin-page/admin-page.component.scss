@@ -114,9 +114,18 @@ body{
             background-color: $bg_White;
             width: 90%;
             .header_title{
+                width: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
                 font-size: 1.7rem;
                 padding-left: 2rem;
                 font-family: "Rubik Gemstones", system-ui;
+                svg{
+                    width: 26px;
+                    height: 26px;
+                    cursor: pointer;
+                }
 
             }
             .pdp_admin{
