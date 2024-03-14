@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,10 +10,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 export class AdminPageComponent implements OnInit, AfterViewInit{
   
   AlluserAndBook!: any;
+  AllUser!: any;
+  
   token = sessionStorage.getItem('token');     
    constructor(
       private http: HttpClient,
-      private renderer: Renderer2
+      private renderer: Renderer2,
+      private router: Router
     ){}
   @ViewChild('container') container!: ElementRef
   @ViewChild('container_btn') containerBtn!: ElementRef
@@ -50,10 +54,14 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
           })
       })
   }
-
+  goback(){
+    this.router.navigate(['./bookstore'])
+  }
   ngAfterViewInit(): void {
     this.click()
-  } 
+    this.getAllUser()
+  }
+
   getAllUserAndBokk(){
      this.AlluserAndBook =  this.http.get('http://localhost:3000/admin',{
       headers: {
@@ -61,10 +69,20 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
       }
      })
      return this.AlluserAndBook;
-      
+   }
+   getAllUser(){
+      this.AllUser = this.http.get('http://localhost:3000/admin/all',{
+        headers: {
+          "Authorization": `Bearer ${this.token}`
+        }
+      })
+      return this.AllUser
    }
    ngOnInit(): void {
     this.getAllUserAndBokk()
     
-  } 
+  }
+  // checked(): any {
+  //   return '#029197'
+  // }
 }

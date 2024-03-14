@@ -13,4 +13,11 @@ export class AdminController {
     ){
         return await this.adminService.getByAdminAllBorrowed(user)
     }
+    @UseGuards(JwtAuthGuard)
+    @Get('all')
+    async getAllUser(
+        @UserReq() user: any,
+    ){
+        return await this.adminService.getAllUser(user)
+    }
 }
