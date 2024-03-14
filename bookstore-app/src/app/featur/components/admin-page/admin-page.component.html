@@ -57,7 +57,7 @@
                             Demande d'emprunt de livre
                         </mat-card-title>
                     </div>
-                    <div class="user_borrowed" [ngClass]="{visible: test == 0}">
+                    <div class="user_borrowed box" [ngClass]="{visible: test == 0}">
                         <div class="user_header">
                             <span class="name">Username</span>
                             <span class="book_title">Title</span>
@@ -68,19 +68,13 @@
                             <span class="user_name">{{bookAndUser.user.userName | titlecase}}</span>
                             <span class="book_title">{{bookAndUser.book.title | titlecase}}</span>
                             <span class="book_status"> Emprunt </span>
-                            <mat-card-actions>
-                                <!-- <mat-checkbox class="example-margin" color="primary"></mat-checkbox> -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-file-check-fill" viewBox="0 0 16 16" [ngStyle]="{fill: checked()}">
+                            <mat-card-actions >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-file-check-fill" viewBox="0 0 16 16" >
                                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                 </svg>
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
-                                    <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-                                    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
-                                  </svg> -->
                              </mat-card-actions>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="allUser content" [ngClass]="{visible: test == 1}">
                     <div class="demande_title">
@@ -88,12 +82,12 @@
                             All User with our Bookstore
                         </mat-card-title>
                     </div>
-                    <div class="user_borrowed" [ngClass]="{visible: test == 0}">
-                        <div class="user_header">
-                            <span class="name">Firstame</span>
-                            <span class="book_title">Lastname</span>
-                            <span class="book_status"> <h1>Email</h1> </span>
-                            <span class="valide">Role</span>
+                    <div class="user" [ngClass]="{visible: test == 0}">
+                        <div class="allUser_header">
+                            <span class="firstName">Firstame</span>
+                            <span class="lastName">Lastname</span>
+                            <span class="email"> Email </span>
+                            <span class="role">Role</span>
                         </div>
                         <div class="user_info" *ngFor="let user of AllUser | async">
                             <span class="user_name">{{user.firstName | titlecase}}</span>
@@ -101,16 +95,7 @@
                             <span class="book_status">
                                 <h1>{{user.email | titlecase}}</h1>
                             </span>
-                            <mat-card-actions>
-                                <!-- <mat-checkbox class="example-margin" color="primary"></mat-checkbox> -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-file-check-fill" viewBox="0 0 16 16" [ngStyle]="{fill: checked()}">
-                                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                </svg>
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
-                                    <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-                                    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
-                                  </svg> -->
-                             </mat-card-actions>
+                           <span class="role">{{user.role}}</span>
                         </div>
                     </div>
                 </div>

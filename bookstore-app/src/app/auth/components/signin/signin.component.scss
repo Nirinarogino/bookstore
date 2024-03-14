@@ -1,7 +1,10 @@
 
     $bg-before: #93441a88;
-    $ob-bg: #ff0000;
-
+    $bg: #ff0000;
+    $bg-before: #93441a88;
+    $primary: #016568;
+    $ob-bg:#029197;
+    $bg_White: #e5e6e0;
 .container{
     display: flex;
     align-items: center;
@@ -123,7 +126,7 @@
     .svg1{
         width: 5rem;
         height: 5rem;
-        fill: #ff0000;
+        fill: $ob-bg;
     }
     .headers{
         display: flex;
@@ -136,7 +139,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff0000;
+            color: $ob-bg;
     
         }
         h4{
@@ -183,7 +186,7 @@
     svg{
         width: 2rem;
         height: 2rem;
-        fill: #636363;
+        fill: $ob-bg;
         padding-left: .5rem;
     }
 input{
@@ -200,7 +203,7 @@ input{
     margin-top: 2rem;
     width: 100%;
     height: 4vh;
-    background-color: #ff0000;
+    background-color: $ob-bg;
     box-shadow: 0 0 .2rem #636363 ;
     display: flex;
     align-items: center;
@@ -214,11 +217,12 @@ input{
     font-weight: bolder;
     color: #ffff;
     transition: .5s ease-in-out;
+    cursor: pointer;
    }
   
 }
 .btn:hover{
-    border: 2px solid #ff0000;
+    border: 2px solid $ob-bg;
     background-color: transparent;
     button{
         color: black;
@@ -233,7 +237,7 @@ input{
     color: #636363;
      font-size: 1rem;
      a{
-        color: #ff000091;
+        color: $ob-bg;
      }
     .transition{
         margin-top: .8rem;

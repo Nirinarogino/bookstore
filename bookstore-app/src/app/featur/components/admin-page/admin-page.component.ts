@@ -78,7 +78,7 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
     this.getAllUserAndBokk()
     
   }
-  checked(): any {
-    return '#029197'
-  }
+  // checked(): any {
+  //   return '#029197'
+  // }
 }
