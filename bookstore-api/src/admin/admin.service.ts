@@ -1,5 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { use } from 'passport';
 import { Books, BorrowedBook, User } from 'src/entities';
 import { Repository } from 'typeorm';
 
@@ -34,5 +35,15 @@ export class AdminService {
 
             }
     }
+    async getAllUser(userNow: any){
+        if(userNow.role === 'admin'){
+            const allUser = await this.userRepository.find();
+            return  allUser.map(user =>{
+                delete user.password
+                delete user.salt
+                return user
+            })
+        }
+      }
 
 }

@@ -1,5 +1,11 @@
 $bg-before: #93441a88;
-
+$primary: #016568;
+$bg:#029197;
+$secondary: #ebb051;
+$tertiary: #da8b3d;
+$bg_White: #e5e6e0;
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Rubik+Gemstones&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Rubik+Gemstones&display=swap');
 body{
     margin: 0;
     padding: 0;
@@ -7,13 +13,13 @@ body{
     overflow-x: hidden;
 }
 .container{
-    background-color: $bg-before;
+    background-color: $bg;
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows: repeat(12,1fr);
-    .cotent{
+    .cotent1{
         grid-column: 1/13;
         grid-row: 2/13;
         display: flex;
@@ -22,8 +28,8 @@ body{
         .side_barre{
             width: 5% !important;
             height: 100%;
-            background-color: white;
-            border-right: 2px solid #272727;
+            background-color: $bg_White;
+            // border-right: 2px solid #272727; 
 
             .content_side_barre{
                 display: flex;
@@ -33,21 +39,13 @@ body{
                 height: 40%;
                 width: 100%;
                 .style{
-                    background-color: blue !important;
-                    &::before{
-                        position: absolute !important;
-                        content: '' !important;
-                        width: 50px !important;
-                        height: 50px !important;
-                        background-color:#27272745 !important;
-                        border-radius: 50% !important;
-                        transition: 200ms !important;
-                        box-shadow: 0 0 .1rem #272727;
-
+                    background-color: $bg !important;
+                    svg{
+                        fill: $bg_White;
                     }
                 }
                 .emprunt{
-                    z-index: 1;
+                    z-index: 2;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -57,16 +55,15 @@ body{
                     background-color: #2727277a;
                     position: relative;
                     cursor: pointer;
-                    box-shadow: 0 0 .1rem #272727;
                     &::before{
+                        z-index: -1 !important;
                         position: absolute !important;
                         content: '';
                         width: 0;
                         height: 0;
-                        background-color:#2727277a ;
-                        z-index: -1;
+                        background-color: $bg !important;
                         border-radius: 50%;
-                        transition: 200ms;
+                        transition: 300ms;
                     }
                     &:hover::before{
                         width: 50px;
@@ -89,70 +86,20 @@ body{
             justify-content: center;
             overflow-x: hidden !important;
             overflow-y: hidden !important;
-            .allUser, .book_delete{
-                transition: 200ms;
+            .allUser, .book_delete, .book_notification{
                 position: absolute;
                 transform: translateX(150%);
                 width: 95%;
                 height: 90%;
                 margin: 0 auto;
-                background-color: white;
+                background-color: $bg_White;
             }
-            .demande_borrowed{
+            .demande_borrowed{ 
+                box-shadow:  0 0 4rem $bg-before !important;
                 width: 95%;
                 height: 90%;
                 margin: 0 auto;
-                background-color: white;
-                .user_header, .user_info{
-                    margin: 0 auto;
-                    height: 5vh;
-                    width: 90%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-bottom: 1px solid black;
-                    .name{
-                        width: 25%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                    }
-                    .book_title{
-                        width: 25%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                    }
-                    .book_status{
-                        width: 25%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    .valide{
-                        width: 25%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-end;
-                    }
-                    mat-card-actions{
-                        width: 25%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-end;
-                    }
-                }
-                .demande_title{
-                    height: 10%;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    mat-card-title{
-                        padding-left: 5rem;
-                        font-size: 1.2rem;
-                    }
-                }
+                background-color:$bg_White;
             }
         }
     }
@@ -162,17 +109,19 @@ body{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: white;
-        border-bottom: 2px solid #272727;
+        background-color: $bg_White;
+        border-bottom: 2px solid  #029197;
         .sous_header{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: white;
+            background-color: $bg_White;
             width: 90%;
             .header_title{
-                font-size: 1.5rem;
+                font-size: 1.7rem;
                 padding-left: 2rem;
+                font-family: "Rubik Gemstones", system-ui;
+
             }
             .pdp_admin{
                 padding-right: 4rem;
@@ -192,15 +141,131 @@ body{
             svg{
                 width: 26px;
                 height: 26px;
-                fill: black;
+                fill: #272727;
             }
         }
     }
 }
 .visible{
     transform: translateX(0) !important;
-    border-radius: 2rem;
+    border-radius: .5rem;
 }
 .hidden{
     transform: translateX(150%) !important;
 }
+
+.user_header{
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    font-weight: 600; 
+    font-family: "Chivo Mono", monospace;
+    font-optical-sizing: auto;
+    padding: .5rem;
+   }
+.user_info{
+    font-family: "Chivo Mono", monospace !important;
+    font-size: 1rem;
+    font-optical-sizing: auto;
+    font-weight: 600; 
+    margin-top: .5rem;
+    padding: .5rem;
+    transition: 500ms ease-in-out;
+    mat-card-actions{
+        svg{
+            width: 26px;
+            height: 26px;
+        }
+    }
+    &:hover{
+        background-color: $tertiary;
+        border-radius: 1rem;
+        border: none;
+        box-shadow: 0 0 .1rem #272727;
+
+    }
+}
+.user_header, .user_info{  
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    height: 5vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #272727;
+    .name{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        letter-spacing: 1px;
+    }
+    .user_name{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        letter-spacing: 1px; 
+    }
+    .book_title{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .book_status{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            width: 80%;
+            left: 0;
+            font-size: 1rem;
+            font-family: "Chivo Mono", monospace !important;
+            font-optical-sizing: auto;
+            font-weight: 600; 
+        }
+    }
+    .valide{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    mat-card-actions{
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+.demande_title{
+    height: 10%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    mat-card-title{
+        padding-left: 5rem;
+        font-size: 1.2rem;
+        font-family: "Chivo Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: bold;
+    }
+    mat-card-actions{
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            svg{
+                width: 50px;
+                height: 50px;
+                fill: black;
+            }
+        }
+    }
+}
+
