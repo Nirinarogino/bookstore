@@ -33,6 +33,9 @@ export class HomeComponent  implements OnInit, AfterViewInit{
       this.adminTeste = true
     }
   }
+  goToAdmin(){
+    this.router.navigate(['bookstore/admin'])
+  }
    selectByCategory(){
       const div = this.category.nativeElement // selectionner le container des catergory de book
       const container = div.querySelectorAll(`.cat`); // selectionner les elt qui ont la classe cat
@@ -65,5 +68,4 @@ export class HomeComponent  implements OnInit, AfterViewInit{
   ngAfterViewInit(): void {
     this.selectByCategory()
   }
-  
 }

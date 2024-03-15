@@ -66,7 +66,7 @@
                     <div class="user_borrowed box" [ngClass]="{visible: test == 0}">
                         <div class="user_header">
                             <span class="name">Username</span>
-                            <span class="book_title">Title</span>
+                            <span class="book_title" id="title">Title</span>
                             <span class="book_status">Type </span>
                             <span class="valide">Validity</span>
                         </div>
@@ -89,17 +89,17 @@
                         </mat-card-title>
                     </div>
                     <div class="user" [ngClass]="{visible: test == 0}">
-                        <div class="allUser_header">
-                            <span class="firstName">Firstame</span>
-                            <span class="lastName">Lastname</span>
-                            <span class="email"> Email </span>
-                            <span class="role">Role</span>
+                        <div class="allUser_header head">
+                            <span class="firstName head">Firstame</span>
+                            <span class="lastName head">Lastname</span>
+                            <span class="email head"> Email </span>
+                            <span class="role head">Role</span>
                         </div>
-                        <div class="user_info" *ngFor="let user of AllUser | async">
-                            <span class="user_name">{{user.firstName | titlecase}}</span>
-                            <span class="book_title">{{user.lastName | titlecase}}</span>
-                            <span class="book_status">
-                                <h1>{{user.email | titlecase}}</h1>
+                        <div class="allUser_header"*ngFor="let user of AllUser | async">
+                            <span class="firstName">{{user.firstName | titlecase}}</span>
+                            <span class="lastName">{{user.lastName | titlecase}}</span>
+                            <span class="email">
+                                <h1>{{user.email}}</h1>
                             </span>
                            <span class="role">{{user.role}}</span>
                         </div>

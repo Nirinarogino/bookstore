@@ -24,7 +24,7 @@ body{
         align-items: center;
         justify-content: center;
         .side_barre{
-            width: 5% !important;
+            width: 5%;
             height: 100%;
             background-color: $bg_White;
             .content_side_barre{
@@ -114,10 +114,10 @@ body{
             background-color: $bg_White;
             width: 90%;
             .header_title{
-                width: 30%;
+                width: 50%;
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: space-between;
                 font-size: 1.7rem;
                 padding-left: 2rem;
                 font-family: "Rubik Gemstones", system-ui;
@@ -192,10 +192,11 @@ body{
     }
 }
 .user_header, .user_info{  
+    background-color: rgba(255, 255, 255, 0.794);
     cursor: pointer;
     margin-right: auto;
     margin-left: auto;
-    height: 5vh;
+    height: 6vh;
     width: 90%;
     display: flex;
     align-items: center;
@@ -226,17 +227,6 @@ body{
         display: flex;
         align-items: center;
         justify-content: center;
-        h1{ 
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 80%;
-            left: 0;
-            font-size: 1rem;
-            font-family: "Chivo Mono", monospace !important;
-            font-optical-sizing: auto;
-            font-weight: 600; 
-        }
     }
     .valide{
         width: 25%;
@@ -284,41 +274,173 @@ body{
     }
 }
 .allUser_header{
+    background-color: rgba(255, 255, 255, 0.794);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: .5rem;   
     margin-right: auto;
     margin-left: auto;
     font-weight: 600; 
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     font-optical-sizing: auto;
     box-shadow: 0 0 .25rem #272727;
     font-family: "Chivo Mono", monospace;cursor: pointer;
     border-radius: 0.25rem;
-    height: 5vh;
+    height: 6vh;
     width: 90%;
+    margin-top: .5rem;
     .lastName{
-        width: 25%;
+        width: 20%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
     }
     .firstName{
-        width: 25%;
+        width: 20%;
         text-align: left;
         display: flex;
         align-items: center;
         justify-content: flex-start;
     }
     .email{
-        width: 25%;
-        text-align: left;
-        padding-left: 2.5rem;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        h1{ 
+            transform: translateY(25%);
+            width: 50%;
+            height: 100%;
+            left: 0;
+            font-family: "Chivo Mono", monospace !important;
+            font-optical-sizing: auto;
+            font-weight: 600; 
+            font-size: 1rem;
+        }
     }
     .role{
-        width: 25%;
+        width: 20%;
         text-align: right;
+    }
+}
+
+@media  screen and (max-width: 1150px) {
+    .content1{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header_title{
+        width: 70% !important;
+    }
+    .menu_list{
+        width: 10% !important;
+    }
+    .side_barre{
+       width: 10% !important;
+    }
+    .demande{
+       width: 90% !important;
+       .content{
+        width: 95% !important;
+        height: 95% !important;
+        .demande_title{
+            width: 100% !important;
+           mat-card-title{
+                padding-left: 2rem;
+           }
+        }
+        .allUser, .user_info, .user_header, .allUser_header{
+            width: 95% !important;
+            height: 8vh;
+            font-size: .9rem !important;
+        }
+       }
+    }
+}
+@media screen and (max-width: 767px) {
+    svg{
+        width: 20px !important;
+        height: 20px !important;
+    }
+   .emprunt{
+        width: 30px !important;
+        height: 30px !important;
+        &::before{
+            z-index: -1 !important;
+            position: absolute !important;
+            content: '';
+            width: 0;
+            height: 0;
+            background-color: $bg !important;
+            border-radius: 50%;
+            transition: 300ms;
+        }
+        &:hover::before{
+            border-radius: 50%;
+            width: 40px !important ;
+            height: 40px !important;
+        }
+   }
+    .header_title{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 80% !important;
+        font-size: 1.1rem !important;
+    } 
+    .pdp_admin{
+       padding-right: 0!important;
+       width: 10%;
+
+    }
+    .demande_title{
+        mat-card-title{
+            font-size: .9rem !important;
+            padding-left: 1rem !important;
+        }
+    }
+    .email{
+        display: none !important;
+    }
+    .book_status{
+        display: none !important;
+    }
+    .user_header, .user_info{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        .user_name{
+            width: 25% !important;
+            font-size: .7rem;
+        }
+        mat-card-actions{
+            width: 10% !important;
+        }
+        .book_title{
+            width: 50% !important;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1rem;
+            font-size: .7rem;
+        }
+    }
+    #title{
+        font-size: .9rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .allUser_header {
+            
+            .firstName,  .lastName, .role{
+                font-size: .7rem;
+            }
+    }
+    .head{
+        font-size: .9rem !important;
     }
 }

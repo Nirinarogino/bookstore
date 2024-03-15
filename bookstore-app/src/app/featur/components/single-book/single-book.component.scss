@@ -1,6 +1,10 @@
 $bg_single: rgba(128, 128, 128, 0.518);
 $bg-before: #93441a88;
-$ob-bg: rgba(0, 0, 255, 0.6);
+// $ob-bg: rgba(0, 0, 255, 0.6);
+$bg-before: #93441a88;
+$primary: #016568;
+$ob-bg:#029197;
+$bg_White: #e5e6e0;
 svg{
     width: 26px;
     height: 26px;
@@ -82,7 +86,7 @@ body{
         padding-left: 2rem;
         span{
             font-size: 1.3rem;
-            color: blue;
+            color: $ob-bg;
         }
     }
 }
@@ -153,8 +157,8 @@ body{
                     text-align: left;
                 }
                 .back{
-                    color: blue;
-                    font-weight: 500;
+                    color: $ob-bg;
+                    font-weight: 600;
                 }
                 button{
                     width: 90%;
