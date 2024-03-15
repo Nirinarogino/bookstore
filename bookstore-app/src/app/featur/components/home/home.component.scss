@@ -301,6 +301,12 @@ input{
     }
 }
 @media all and (max-width:599px){
+    .nav_barre{
+        .title{ 
+             padding-left: .5rem !important;
+            font-size: 1.2rem !important;
+        }
+    }
     .container{
         display: flex;
         align-items: center;

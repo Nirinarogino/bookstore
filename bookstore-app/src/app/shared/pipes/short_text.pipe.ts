@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class ShortPipe implements PipeTransform{
     transform(value: string): string {
      
-        if(value.length <= 250){
+        if(value.length <= 200){
             return value;
         }
-        return value.substring(0, 250) + "...";
+        return value.substring(0, 200) + "...";
     }
 
 }
