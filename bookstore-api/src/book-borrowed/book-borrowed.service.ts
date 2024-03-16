@@ -1,6 +1,7 @@
     import { Injectable, UnauthorizedException } from '@nestjs/common';
     import { InjectRepository } from '@nestjs/typeorm';
     import { Books, BorrowedBook, User } from 'src/entities';
+import { demande } from 'src/enums/borrowed-demande.enums';
     import { DeepPartial, Repository } from 'typeorm';
 
     @Injectable()
@@ -22,8 +23,10 @@
             const newBorrowedBookPartial: DeepPartial<BorrowedBook> = {
                 borrowedDate: new Date(Date.now()),
                 giveBakcDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+                demande: demande.loading,
                 user: userWhoBorrowed,
-                book: bookWhichBorrowed
+                book: bookWhichBorrowed,
+                // book.
               };
               console.log(newBorrowedBookPartial);
             const newBorrowedBook =  this.borrowedBookRepository.create(newBorrowedBookPartial);
@@ -36,11 +39,12 @@
                     throw new UnauthorizedException('Vous devez être connecté');
                 }
                 const name = userNow.userName
+                const demande = 'accepted'
                 const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
                 const borrowedBooks = await qb
                     .leftJoinAndSelect("BorrowedBook.book", "book")
                     .leftJoinAndSelect("BorrowedBook.user", "user")
-                    .where('user.userName = :name', { name })
+                    .where('user.userName = :name && BorrowedBook.demande = :demande'  , { name , demande })
                     .getMany();
                     const bookInfo = borrowedBooks.map(borrowedBook => {
                         delete borrowedBook.user
