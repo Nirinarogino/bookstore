@@ -1,7 +1,7 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { use } from 'passport';
 import { Books, BorrowedBook, User } from 'src/entities';
+import { demande } from 'src/enums/borrowed-demande.enums';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -17,11 +17,12 @@ export class AdminService {
     async getByAdminAllBorrowed(userNow: any) {
         if(userNow.role === 'admin')
             {
-               const name = userNow.userName
                 const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
+                const demande = 'loading'
                 const borrowedBooks = await qb
                 .leftJoinAndSelect("BorrowedBook.book", "book")
                 .leftJoinAndSelect("BorrowedBook.user", "user")
+                .where("BorrowedBook.demande = :demande", { demande})
                 .getMany();
                 const borrowedBookInfo = borrowedBooks.map(borrowedBook => {
                     delete borrowedBook.user.password
@@ -45,5 +46,22 @@ export class AdminService {
             })
         }
       }
-
-}
+      async DemandeAccepeted(title: any, userNow: any) {
+        try {
+             const {titre} = title
+            const qb = this.borrowedBookRepository.createQueryBuilder('BorrowedBook');
+            const upBorrowed = await qb
+                .leftJoinAndSelect('BorrowedBook.book', 'book')
+                .where('book.title = :titre', { titre })
+                .getOne();
+                console.log(upBorrowed);
+                
+            return upBorrowed;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+    
+        
+    }
