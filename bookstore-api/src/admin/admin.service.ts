@@ -47,19 +47,29 @@ export class AdminService {
         }
       }
       async DemandeAccepeted(title: any, userNow: any) {
+        // const teste = await this.bookRepository.find({where:{title: title.Title}})
+        // console.log(teste);
+        const titre = title.title
         try {
-             const {titre} = title
-            const qb = this.borrowedBookRepository.createQueryBuilder('BorrowedBook');
-            const upBorrowed = await qb
-                .leftJoinAndSelect('BorrowedBook.book', 'book')
-                .where('book.title = :titre', { titre })
-                .getOne();
-                console.log(upBorrowed);
-                
-            return upBorrowed;
+            if (userNow === undefined || userNow === null) {
+                throw new UnauthorizedException('Vous devez être connecté');
+            }
+            const title = userNow.userName
+            const qb = this.borrowedBookRepository.createQueryBuilder("BorrowedBook");
+            const borrowedBooks = await qb
+                .leftJoinAndSelect("BorrowedBook.book", "book")
+                // .leftJoinAndSelect("BorrowedBook.user", "user")
+                .where('book.title = :titre'  , { titre })
+                .getMany();
+                const bookInfo = borrowedBooks.map(borrowedBook => {
+                    // delete borrowedBook.user
+                    return borrowedBook;
+                });// pour recuperer seulement le book
+            return bookInfo; // Optionnel : retourne le tableau borrowedBooks
         } catch (error) {
+            // Gère les erreurs potentielles
             console.error(error);
-            throw error;
+            throw error; // Renvoie l'erreur pour qu'elle soit gérée par l'appelant
         }
     }
     
