@@ -19,6 +19,7 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
       private router: Router
     ){}
   @ViewChild('container') container!: ElementRef
+  @ViewChild('userInfo') userInfo!: ElementRef
   @ViewChild('container_btn') containerBtn!: ElementRef
   test!: number;
   slide(){
@@ -57,7 +58,33 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
   goback(){
     this.router.navigate(['./bookstore'])
   }
+  demandeValidate() {
+    const allBookBorrowed = this.userInfo.nativeElement.querySelectorAll('.book');
+    allBookBorrowed.forEach((element:any) => {
+        const svgElements = element.querySelectorAll('svg');
+        svgElements.forEach((svgElement:any) => {          
+            svgElement.addEventListener('click', () => {
+                // Your event handler logic here
+                const div = svgElement.parentElement.parentElement;
+                const title = div.querySelector('.book_title')
+                const corps = {
+                  title: title.textContent,
+                }
+                console.log('ok');
+                this.http.put(`http://localhost:3000/admin`, corps,{
+                  headers: {
+                    "Authorization": `Bearer ${this.token}`
+                  }
+                }).subscribe()
+            });
+        });
+    });
+}
+
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.demandeValidate();
+    }, 2000);
     this.click()
     this.getAllUser()
   }
