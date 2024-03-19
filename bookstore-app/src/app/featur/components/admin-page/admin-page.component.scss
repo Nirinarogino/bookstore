@@ -38,6 +38,7 @@ body{
                     background-color: $bg !important;
                     svg{
                         fill: $bg_White;
+
                     }
                 }
                 .emprunt{
@@ -68,6 +69,7 @@ body{
                     svg{
                         width: 26px;
                         height: 26px;
+                        z-index: 2;
                     }
                 }
             }
