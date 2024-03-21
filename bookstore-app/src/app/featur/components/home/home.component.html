@@ -12,7 +12,7 @@
                 <mat-card-title>Bookstore</mat-card-title>
             </div>
             <div class="search">
-                <input type="search" placeholder="Search">
+                <input type="search" placeholder="Search" [formControl]="searchCtrl">
                     <div class="form">                    
                             <mat-select [formControl]="searchTypeCtrl">
                                 <mat-option *ngFor="let option of searchTypeOptions" [value]="option.value">{{ option.label }}</mat-option>

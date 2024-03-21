@@ -1,4 +1,4 @@
 export enum bookSearchType {
-    TITLE = 'TITLE',
-    AUTEUR = 'AUTEUR',
+    title = 'title',
+    author = 'author',
 }

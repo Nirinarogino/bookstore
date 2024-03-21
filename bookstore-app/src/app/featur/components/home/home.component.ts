@@ -72,26 +72,37 @@ export class HomeComponent  implements OnInit, AfterViewInit{
 
   initform() {
      this.searchCtrl = this.formBuilder.control('');
-     this.searchTypeCtrl = this.formBuilder.control(bookSearchType.TITLE)
+     this.searchTypeCtrl = this.formBuilder.control(bookSearchType.title)
      this.searchTypeOptions = [
-      {value:bookSearchType.TITLE, label:'Title'},
-      {value:bookSearchType.AUTEUR, label:'author'}
+      {value:bookSearchType.title, label:'title'},
+      {value:bookSearchType.author, label:'author'}
      ]
   }
 
-   search$ = this.searchCtrl.valueChanges.pipe(
-    startWith(this.searchCtrl.value),
-    map(value => value.toLowerCase())
-);
-      searchType$: Observable<bookSearchType> = this.searchTypeCtrl.valueChanges.pipe(
-      startWith(this.searchTypeCtrl.value)
-);
-
+  private initObservable(){
+   const search$ = this.searchCtrl.valueChanges.pipe(
+      startWith(this.searchCtrl.value),
+      map(value => value.toLowerCase())
+  );
+      const  searchType$: Observable<bookSearchType> = this.searchTypeCtrl.valueChanges.pipe(
+        startWith(this.searchTypeCtrl.value)
+  );
+    this.book$ = combineLatest([
+      search$,
+      searchType$,
+      this.homeService.getAllBooks()
+    ]).pipe(
+      map(([search, searchType, books]) => books.filter(book => book[searchType]
+        .toLowerCase()
+        .includes(search as string)))
+    )
+  }
 
   ngOnInit(): void {
     this.getbook()
     this.testeAdmin()
     this.initform()
+    this.initObservable()
   }
   ngAfterViewInit(): void {
     this.selectByCategory()
