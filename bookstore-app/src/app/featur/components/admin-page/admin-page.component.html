@@ -63,18 +63,18 @@
                             Demande d'emprunt de livre
                         </mat-card-title>
                     </div>
-                    <div class="user_borrowed box" [ngClass]="{visible: test == 0}">
+                    <div class="user_borrowed box" [ngClass]="{visible: test == 0}" #userInfo>
                         <div class="user_header">
                             <span class="name">Username</span>
-                            <span class="book_title">Title</span>
+                            <span class="book_title" id="title">Title</span>
                             <span class="book_status">Type </span>
                             <span class="valide">Validity</span>
                         </div>
                         <div class="user_info" *ngFor="let bookAndUser of AlluserAndBook| async">
-                            <span class="user_name">{{bookAndUser.user.userName | titlecase}}</span>
-                            <span class="book_title">{{bookAndUser.book.title | titlecase}}</span>
-                            <span class="book_status"> Emprunt </span>
-                            <mat-card-actions >
+                            <span class="user_name book">{{bookAndUser.user.userName | titlecase}}</span>
+                            <span class="book_title bt book ">{{bookAndUser.book.title | titlecase}}</span>
+                            <span class="book_status book"> Emprunt </span>
+                            <mat-card-actions class="btn book">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-file-check-fill" viewBox="0 0 16 16" >
                                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                 </svg>
@@ -89,17 +89,17 @@
                         </mat-card-title>
                     </div>
                     <div class="user" [ngClass]="{visible: test == 0}">
-                        <div class="allUser_header">
-                            <span class="firstName">Firstame</span>
-                            <span class="lastName">Lastname</span>
-                            <span class="email"> Email </span>
-                            <span class="role">Role</span>
+                        <div class="allUser_header head">
+                            <span class="firstName head">Firstame</span>
+                            <span class="lastName head">Lastname</span>
+                            <span class="email head"> Email </span>
+                            <span class="role head">Role</span>
                         </div>
-                        <div class="user_info" *ngFor="let user of AllUser | async">
-                            <span class="user_name">{{user.firstName | titlecase}}</span>
-                            <span class="book_title">{{user.lastName | titlecase}}</span>
-                            <span class="book_status">
-                                <h1>{{user.email | titlecase}}</h1>
+                        <div class="allUser_header"*ngFor="let user of AllUser | async">
+                            <span class="firstName">{{user.firstName | titlecase}}</span>
+                            <span class="lastName">{{user.lastName | titlecase}}</span>
+                            <span class="email">
+                                <h1>{{user.email}}</h1>
                             </span>
                            <span class="role">{{user.role}}</span>
                         </div>
