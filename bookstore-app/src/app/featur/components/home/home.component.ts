@@ -1,9 +1,11 @@
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, map, startWith } from 'rxjs';
 import { Book } from 'src/app/models/book.model';
 import { HomeService } from '../../services/home-service.service';
 import { SigninService } from 'src/app/auth/services/signin.service';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { bookSearchType } from '../enums/search-book.enum';
 
 
 @Component({
@@ -18,12 +20,19 @@ export class HomeComponent  implements OnInit, AfterViewInit{
   token = sessionStorage.getItem('token')
   adminTeste !: boolean;
   @Input() Book!: Book;
-
+  searchCtrl!: FormControl;
+  searchTypeCtrl!: FormControl;
+  otherBook$!: Observable<any>
+  searchTypeOptions!: {
+    value: bookSearchType,
+    label: string
+}[];
  constructor(
   private route: ActivatedRoute,
   private homeService: HomeService,
   private router:Router,
   private signinService: SigninService,
+  private formBuilder: FormBuilder
   ){}
  
   @ViewChild('category') category!: ElementRef;
@@ -61,9 +70,28 @@ export class HomeComponent  implements OnInit, AfterViewInit{
       return this.book$
   }
 
+  initform() {
+     this.searchCtrl = this.formBuilder.control('');
+     this.searchTypeCtrl = this.formBuilder.control(bookSearchType.TITLE)
+     this.searchTypeOptions = [
+      {value:bookSearchType.TITLE, label:'Title'},
+      {value:bookSearchType.AUTEUR, label:'author'}
+     ]
+  }
+
+   search$ = this.searchCtrl.valueChanges.pipe(
+    startWith(this.searchCtrl.value),
+    map(value => value.toLowerCase())
+);
+      searchType$: Observable<bookSearchType> = this.searchTypeCtrl.valueChanges.pipe(
+      startWith(this.searchTypeCtrl.value)
+);
+
+
   ngOnInit(): void {
     this.getbook()
     this.testeAdmin()
+    this.initform()
   }
   ngAfterViewInit(): void {
     this.selectByCategory()

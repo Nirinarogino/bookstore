@@ -13,6 +13,11 @@
             </div>
             <div class="search">
                 <input type="search" placeholder="Search">
+                    <div class="form">                    
+                            <mat-select [formControl]="searchTypeCtrl">
+                                <mat-option *ngFor="let option of searchTypeOptions" [value]="option.value">{{ option.label }}</mat-option>
+                            </mat-select>
+                    </div>
             </div>
             <div class="elt">
                 <mat-card-title> 
