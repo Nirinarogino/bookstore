@@ -14,6 +14,7 @@ import { bookSearchType } from '../enums/search-book.enum';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent  implements OnInit, AfterViewInit{
+  
 // ============= Variable ===========
   mybook!: Book;  
   book$!: any;
@@ -96,6 +97,9 @@ export class HomeComponent  implements OnInit, AfterViewInit{
         .toLowerCase()
         .includes(search as string)))
     )
+  }
+  Deconnexion(){
+    this.router.navigate(['./'])
   }
 
   ngOnInit(): void {
