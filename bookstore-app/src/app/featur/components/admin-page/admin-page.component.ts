@@ -61,7 +61,7 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
   demandeValidate() {
     const allBookBorrowed = this.userInfo.nativeElement.querySelectorAll('.book');
     allBookBorrowed.forEach((element:any) => {
-        const svgElements = element.querySelectorAll('svg');
+        const svgElements = element.querySelectorAll('button');
         svgElements.forEach((svgElement:any) => {          
             svgElement.addEventListener('click', () => {
                 // Your event handler logic here
@@ -70,14 +70,13 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
                 const corps = {
                   title: title.textContent,
                 }
-                console.log('ok');
                 this.http.put(`http://localhost:3000/admin`, corps,{
                   headers: {
                     "Authorization": `Bearer ${this.token}`
                   }
                 }).subscribe()
             });
-        });
+        }); 
     });
 }
 
@@ -109,7 +108,7 @@ export class AdminPageComponent implements OnInit, AfterViewInit{
     this.getAllUserAndBokk()
     
   }
-  // checked(): any {
-  //   return '#029197'
-  // }
+  gotoAdd(){
+    this.router.navigate(['bookstore/add'])
+  }
 }

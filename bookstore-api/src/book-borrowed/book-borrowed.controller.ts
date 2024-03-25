@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, UseGuards } from '@nestjs/common';
 import { BookBorrowedService } from './book-borrowed.service';
 import { UserReq } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -9,7 +9,7 @@ export class BookBorrowedController {
         private bookBorrowedService: BookBorrowedService,
     ){}
 
-    @Post()
+    @Put()
     @UseGuards(JwtAuthGuard)
     async borrowedBook(
                         @Body() borrowedBook: any,

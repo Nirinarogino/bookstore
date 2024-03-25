@@ -1,6 +1,6 @@
 import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { addBookDto } from './dto/addBook.dto';
-import { Books, User } from 'src/entities';
+import { Books, BorrowedBook, User } from 'src/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -10,7 +10,9 @@ export class BookService {
         @InjectRepository(Books)
         private bookRepository: Repository<Books>,
         @InjectRepository(User)
-        private userRepository: Repository<User>
+        private userRepository: Repository<User>,
+        @InjectRepository(BorrowedBook)
+        private borrowedBookRepository: Repository<BorrowedBook>
         ) {}
 
     async addBook(book: addBookDto, user: any, file: any): Promise<Books> {
@@ -46,7 +48,14 @@ export class BookService {
     }
        
     async viewAllBooks(){
-            return await this.bookRepository.find()
+            const allBook =  await  this.bookRepository.find()
+            allBook.map((value) => {
+                if(value.availabilityStatus === 'available'){
+                    return value
+                }
+            })
+
+            return allBook
     }
 
     async delleteBookById(id: number,user: any) {

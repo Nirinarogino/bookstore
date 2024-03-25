@@ -17,7 +17,7 @@ export class SingleServiceService {
     const book = {
       BookId: bookId
     }
-    return  this.http.post('http://localhost:3000/book-borrowed', book ,{
+    return  this.http.put('http://localhost:3000/book-borrowed', book ,{
       headers: {
         "Authorization": `Bearer ${this.token}`
       }
