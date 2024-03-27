@@ -13,6 +13,7 @@ import { SingleServiceService } from '../../services/single-service.service';
 })
 export class SingleBookComponent implements OnInit{
   isClicked!: boolean;
+  clicked = false;
   oneBook$!: Observable<Book>;
   borrowed$!: any;
   constructor(
@@ -47,7 +48,7 @@ export class SingleBookComponent implements OnInit{
   }
 
   borrowedBook(){
-    console.log(this.id);
+    this.clicked = true;
    return this.singleService.borrowedBook(this.id)
   }
   async getBookBorrowedByOneUser(){

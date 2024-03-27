@@ -20,6 +20,13 @@ import { demande } from 'src/enums/borrowed-demande.enums';
         async borrowedBook(user:any, book_id: number) {
             const userWhoBorrowed = await this.userRepository.findOne({where: {userId: user.userId}});
             const bookWhichBorrowed = await this.bookRepository.findOne({ where:{ bookId: book_id } });
+            const qb =  this.bookRepository.createQueryBuilder("Books")
+            await qb
+            .update(bookWhichBorrowed)
+            .set({availabilityStatus: "unavailable"})
+            .where('bookId =:book_id',{book_id})
+            .execute()
+
             const newBorrowedBookPartial: DeepPartial<BorrowedBook> = {
                 borrowedDate: new Date(Date.now()),
                 giveBakcDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
