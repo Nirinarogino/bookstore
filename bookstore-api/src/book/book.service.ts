@@ -48,13 +48,7 @@ export class BookService {
     }
        
     async viewAllBooks(){
-            const allBook =  await  this.bookRepository.find()
-            allBook.map((value) => {
-                if(value.availabilityStatus === 'available'){
-                    return value
-                }
-            })
-
+            const allBook =  await  this.bookRepository.find({where:{availabilityStatus: 'available'}})
             return allBook
     }
 
@@ -78,7 +72,6 @@ export class BookService {
     async findBookById( id: number ) : Promise<Books>{
         const bookFind = await this.bookRepository.findOne({where: {bookId: id}})
         if(bookFind){
-            console.log('trouver')
             return  bookFind;
         } 
         throw new UnauthorizedException('You are not allowed to')
